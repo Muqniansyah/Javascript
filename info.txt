@@ -1,0 +1,4 @@
+untuk bisa menjalankan code dijavascript ada beberapa cara:
+1.dengan search engine, seperti google atau mozilla
+2.dengan npm dan node js sebagai package dari javascript
+3.dengan menggunakan extension code runner pada vscode
