@@ -10,6 +10,7 @@ let age = 20;
 
 // menginisialisasi nilai baru melalui object destruction
 ({ firstName, age } = profile);
+// Saat melakukan destructuring assignment, kita harus menuliskan destructuring object di dalam tanda kurung.
 
 console.log(firstName);
 console.log(age);

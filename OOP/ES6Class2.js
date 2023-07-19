@@ -1,5 +1,10 @@
-// Untuk menambahkan method pada class, kita juga cukup menuliskannya pada body class
+// disini adalah contoh jika class dijalankan pada satu file yang sama dengan pembuatan classnya.
 
+// Pembuatan class pada ES6 menggunakan keyword class itu sendiri kemudian diikuti dengan nama class-nya.
+/*
+Ketika kita hendak membuat sebuah constructor function ataupun class. Secara code convention (aturan penulisan), 
+gunakan PascalCase dalam penamaannya. Contohnya Car daripada car, SportCar daripada sportCar atau Sportcar.
+*/
 class Car {
   // konstruktor
   constructor(manufacture, color) {
@@ -9,7 +14,6 @@ class Car {
   }
 
   // method dan function
-  // pembuatan method dan function didalam class tidak perlu menuliskan 'function' pada pembuatan fungsinya.
   startEngines() {
     console.log("mobil dinyalakan");
     this.engineActive = true;
