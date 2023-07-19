@@ -1,4 +1,5 @@
-//Static method merupakan method yang tidak dapat dipanggil oleh instance dari class, namun dapat dipanggil melalui class-nya sendiri.
+// Static method merupakan method yang tidak dapat dipanggil oleh instance dari class, namun dapat dipanggil melalui class-nya sendiri.
+// Pada ES6 class kita dapat membuat static method dengan menambahkan keyword static sebelum deklarasi method-nya.
 
 class Vehicle {
   constructor(licensePlate, manufacture) {
@@ -38,7 +39,8 @@ class Car extends Vehicle {
 }
 
 class VehicleFactory {
-  repair(vehicles) {
+  // menambahkan keyword static sebelum deklarasi method-nya
+  static repair(vehicles) {
     vehicles.forEach((vehicle) => {
       console.log(
         `Kendaraan ${vehicle.licensePlate} sedang melakukan perawatan`
@@ -50,7 +52,6 @@ class VehicleFactory {
 // instance
 const car = new Car("H121s", "Honda", 4);
 
-const vehicleFactory = new VehicleFactory();
-
+// Kemudian untuk memanggil methodnya kita bisa panggil melalui class VehicleFactory kemudian repair().
 // pemanggilan method dan function
-vehicleFactory.repair([car]);
+VehicleFactory.repair([car]);
