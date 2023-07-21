@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Contoh parentNode</title>
+  </head>
+  <body>
+    <div>
+      <p>Paragraf</p>
+    </div>
+
+    <script>
+      const paragraph = document.querySelector("p");
+      const parentDiv = paragraph.parentNode;
+      console.log(parentDiv.tagName); // Output: "DIV"
+    </script>
+  </body>
+</html>

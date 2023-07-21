@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event onload dan onclick</title>
+    <style>
+    .contents {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 2px solid black;
+      padding: 15px;
+      text-align: center;
+    }
+    
+    #generateButton {
+      margin-top: 5px;
+      margin-bottom: 15px;;
+    }
+
+
+    </style>
+</head>
+<body>
+    
+<div class="contents" hidden>
+  <button id="incrementButton">Tekan Aku :)</button>
+  <h3>Kamu sudah menekan tombol di atas sebanyak <span id="count">0</span></h3>
+</div>
+
+
+
+<!-- javascript -->
+  <script>
+// fungsi welcome untuk hapus attribut hidden pada elemen <div>.
+function welcome(){
+  alert('muncullah wahai elemen HTML');
+  const contents = document.querySelector('.contents');
+  contents.removeAttribute('hidden');
+}
+
+// memanggil event onload untuk memunculkan fungsi welcome
+document.body.onload = welcome;
+
+
+// function increment yang akan melakukan proses increment atau kenaikan angka sebagai jumlah berapa kali user menekan tombol.
+function increment() {
+  document.getElementById('count').innerText++; 
+
+  //fitur kejutan ketika tombol ditekan hingga 7 kali
+  if (document.getElementById('count').innerText == 7) {
+    const hiddenMessage = document.createElement('h4');
+    hiddenMessage.innerText = 'Selamat! Anda menemeukan hadiah tersembunyi...';
+    
+    const image = document.createElement('img');
+    image.setAttribute('src', 'garuda wisnu kencana.jpg');
+    image.setAttribute('width', 300);
+
+    const contents = document.querySelector('.contents');
+    contents.appendChild(hiddenMessage).appendChild(image);
+  }
+}
+
+//memanggil event onclick untuk memunculkan fungsi increment
+document.getElementById('incrementButton').onclick = increment;
+
+
+  </script>
+</body>
+</html>

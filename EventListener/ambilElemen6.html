@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Contoh getElementsByName()</title>
+  </head>
+  <body>
+    <input type="text" name="username" value="John Doe" />
+    <input type="text" name="email" value="johndoe@example.com" />
+
+    <script>
+      const usernameInput = document.getElementsByName("username")[0];
+      console.log(usernameInput.value);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Contoh nextSibling dan previousSibling</title>
+  </head>
+  <body>
+    <div>
+      <p>Paragraf 1</p>
+      <p>Paragraf 2</p>
+    </div>
+
+    <script>
+      const firstParagraph = document.querySelector("p");
+      const secondParagraph = firstParagraph.nextSibling;
+      const previousParagraph = secondParagraph.previousSibling;
+
+      console.log(firstParagraph.innerText); // Output: "Paragraf 1"
+      console.log(secondParagraph.innerText); // Output: "Paragraf 2"
+      console.log(previousParagraph.innerText); // Output: "Paragraf 1"
+    </script>
+  </body>
+</html>

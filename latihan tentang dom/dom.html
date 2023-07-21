@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to Cube World!</title>
+    <style>
+      .container {
+        text-align: center;
+      }
+
+      button {
+        width: 200px;
+        font-size: 15px;
+        margin: 8px;
+        padding: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Its Cube Time!</h2>
+      <img
+        id="gambar"
+        src="garuda wisnu kencana.jpg"
+        alt="GWK"
+        width="150"
+        height="100"
+      />
+      <p id="caption">
+        <b>Sudah siap untuk memecahkan teka-teki permainan tersebut?</b>
+      </p>
+      <div class="button-group">
+        <div class="button">
+          <button>Sejarah</button>
+        </div>
+        <div class="button">
+          <button>Permainan</button>
+        </div>
+        <div class="button">
+          <button><i>Fun Fact</i></button>
+        </div>
+        <div class="button">
+          <button>Play (Coming Soon)</button>
+        </div>
+        <div class="button">
+          <button>Exit</button>
+        </div>
+      </div>
+    </div>
+
+    <hr size="2" width="95%" color="black" />
+    <div id="links">
+      <p>Situs lainnya yang tidak kalah menarik:</p>
+      <ul>
+        <li>
+          <a href="https://unsplash.com/" id="unsplashLink">Unsplah</a>
+        </li>
+        <li><a href="http://www.google.com" id="googleLink">Google</a></li>
+      </ul>
+    </div>
+
+    <hr size="2" width="95%" color="black" />
+    <p id="name">Langkah-langkah memasak air</p>
+    <ol id="daftar">
+      <li id="awal">Masukkan air ke dalam wadah.</li>
+      <li id="akhir">Matikan kompor.</li>
+    </ol>
+    <hr size="2" width="95%" color="black" />
+
+    <!-- javascript -->
+    <script>
+      // manipulasi attribut
+      const gambar = document.getElementById("gambar");
+      gambar.setAttribute("width", 300);
+      gambar.setAttribute("height", 215);
+
+      const buttons = document.querySelectorAll(".button");
+      const playButton = buttons[3];
+      const playButtonElement = playButton.children[0];
+      playButtonElement.setAttribute("type", "submit");
+
+      //manipulasi konten elemen seperti innerText, innerHTML dan style.property.
+      const dicoding = document.getElementById("unsplashLink");
+      dicoding.innerText = "Cari gambar disini";
+      const google = document.getElementById("googleLink");
+      google.innerText = "Mencari Sesuatu di Google";
+
+      const title = document.querySelector("h2");
+      title.innerHTML = "<i>Belajar</i>";
+
+      const beberapaButton = document.getElementsByClassName("button");
+      for (const button of buttons) {
+        button.children[0].style.borderRadius = "6px";
+        button.children[0].style.color = "red";
+      }
+
+      //Menambahkan Elemen HTML ke DOM
+      //dengan appendChild()
+      const newElement = document.createElement("li");
+      newElement.innerText = "Selamat menikmati!";
+      const daftar = document.getElementById("daftar");
+      daftar.appendChild(newElement);
+
+      //dengan insertBefore()
+      const elementAwal = document.createElement("li");
+      elementAwal.innerText = "Hidupkan kompor.";
+      const itemAwal = document.getElementById("awal");
+      daftar.insertBefore(elementAwal, itemAwal);
+    </script>
+  </body>
+</html>

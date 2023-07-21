@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Contoh children</title>
+  </head>
+  <body>
+    <div>
+      <p>Paragraf 1</p>
+      <p>Paragraf 2</p>
+    </div>
+
+    <script>
+      const parentDiv = document.querySelector("div");
+      const childParagraphs = parentDiv.children;
+      for (const p of childParagraphs) {
+        console.log(p.innerText);
+      }
+    </script>
+  </body>
+</html>

@@ -1,5 +1,5 @@
 // cara untuk mengimpor nilainya, Kita dapat melakukannya dengan menggunakan keyword import … from
-import stokKopi from "./export1";
+import stokKopi from "./export1.js";
 
 console.log(stokKopi);
 

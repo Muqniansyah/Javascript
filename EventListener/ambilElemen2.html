@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Contoh getElementsByClassName()</title>
+  </head>
+  <body>
+    <div class="myClass">Elemen dengan class pertama</div>
+    <div class="myClass">Elemen dengan class kedua</div>
+
+    <script>
+      const elements = document.getElementsByClassName("myClass");
+      for (const elem of elements) {
+        console.log(elem.innerText);
+      }
+    </script>
+  </body>
+</html>
