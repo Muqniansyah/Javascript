@@ -1,0 +1,10 @@
+cara memebuat custom element :
+1. buat javascript class untuk custom element di file javascript
+2. mendefinisikan custom element serta beri tahu bahwa terdapat HTML tag baru
+3. letakkan tag name baru yang dibuat tadi di html atau dengan cara yang kedua yaitu 
+ menggunakan sintaks JavaScript. Sama seperti membuat element HTML biasa, kita gunakan method
+document.createElement dalam membuat elemen baru.
+4.Untuk memberikan atribut dan nilainya pada custom element bisa dengan melakukannya langsung pada elemennya(tag element yang baru dibuat dihtml), atau melalui JavaScript.
+5. mengganti/mengamati nilai dari atribut yang berubah(optional). dengan memakai 2 fungsi yaitu fungsi attributeChangedCallback, dan yang kedua fungsi static get observedAttributes.
+6. menerapkan style/styling bisa dengan menuliskan styling dengan menggunakan tag <style> pada saat merender template HTML menggunakan innerHTML
+atau dengan cara menuliskan styling pada berkas css yang ditautkan pada html.
