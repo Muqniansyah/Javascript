@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Contoh Consume API dengan Fetch</title>
+  </head>
+  <body>
+    <h1>Daftar Postingan</h1>
+    <ul id="post-list"></ul>
+
+    <script>
+      const apiUrl = "https://jsonplaceholder.typicode.com/posts";
+
+      // Fungsi untuk mengambil data dari API
+      function fetchData() {
+        fetch(apiUrl)
+          .then((response) => response.json())
+          .then((data) => {
+            // Menampilkan data dalam elemen dengan ID "post-list"
+            const postList = document.getElementById("post-list");
+            data.forEach((post) => {
+              const li = document.createElement("li");
+              li.innerText = post.title;
+              postList.appendChild(li);
+            });
+          })
+          .catch((error) => {
+            // Menampilkan pesan error jika terjadi masalah saat mengambil data dari API
+            console.error(
+              "Terjadi kesalahan saat mengambil data dari API:",
+              error
+            );
+          });
+      }
+
+      // Panggil fungsi fetchData() saat halaman selesai dimuat
+      window.onload = fetchData;
+    </script>
+  </body>
+</html>

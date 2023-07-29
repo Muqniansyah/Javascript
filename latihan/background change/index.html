@@ -8,9 +8,46 @@
   </head>
   <body>
     <div class="container">
-      <h1>Ubah Warna</h1>
+      <div class="title">PIlih Warna</div>
+      <div class="box">
+        <div class="circle red"></div>
+        <div class="circle blue"></div>
+        <div class="circle yellow"></div>
+        <div class="circle black"></div>
+      </div>
+      <a href="#" class="btn-reset">Reset Warna</a>
     </div>
 
-    <script></script>
+    <script>
+      // mengambil sluruh elemen class circle, atau circles yang didalamnya berupa array dari circle
+      const circles = document.querySelectorAll(".circle");
+      // 4 circle dilooping dan didalamnya berikan event listener click
+      circles.forEach((circle) => {
+        // ketika masing" elemen diklik ambil dengan target dalamnya supaya ambil value
+        circle.addEventListener("click", ({ target }) => {
+          // setelah dapat value background color sesuai klik user
+          const { backgroundColor } = getComputedStyle(target);
+          // lalu masukkan kedalam body dari html
+          document.body.style.backgroundColor = backgroundColor;
+        });
+      });
+
+      // reset warna
+      const body = document.querySelector("body");
+      document.querySelector(".btn-reset").onclick = () => {
+        body.style.backgroundColor = "white";
+        text.style.color = "black";
+      };
+
+      // ganti color font
+      const text = document.querySelector(".title");
+      const black = document.querySelector(".black");
+
+      document.querySelector(".black").onclick = (event) => {
+        if (event.target == black) {
+          text.style.color = "white";
+        }
+      };
+    </script>
   </body>
 </html>
