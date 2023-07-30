@@ -1,0 +1,169 @@
+#Jika menampilkan nomor versi berarti Node.js dan NPM sudah berhasil terpasang pada komputer 
+#Sebenarnya terdapat dua tipe objek package dependencies dalam berkas package.json. Yang pertama objek dependencies, dan yang kedua objek devDepedencies.
+#Perlu kita ketahui bahwa sejatinya package yang dipasang melalui NPM diperuntukkan untuk node application yang berjalan diluar browser.
+
+1.)node -v
+melihat versi node js
+
+2.)npm -v
+melihat versi npm
+
+#Pada Terminal/Command Prompt untuk menuliskan perintah NPM kita perlu menuliskan keyword npm terlebih dahulu. 
+
+3.)npm install <package-name>
+untuk install package Objek dependencies merupakan objek yang menampung package yang kita gunakan untuk membuat aplikasi. 
+Biasanya package yang didaftarkan pada dependencies merupakan 
+sebuah framework seperti React, Angular, Vue, jQuery atau framework lainnya.  
+dan memasang dan mendaftarkan package pada berkas package.json
+
+4.)npm help
+untuk melihat daftar command yang tersedia pada npm
+
+# gunakan -h jika kita ingin melihat panduan penggunaan pada salah satu perintahnya. 
+
+5.)npm install -h
+untuk melihat panduan penggunaan perintah install
+
+#Untuk menggunakan NPM dalam proyek lokal, kita membutuhkan berkas package.json. Berkas tersebut merupakan tempat menyimpan informasi aplikasi yang kita buat.
+
+6.)npm init
+membuat berkas package.json
+ 
+-keterangan :
+Setelah menuliskan perintah di atas, kita akan diberikan beberapa pertanyaan untuk mengisi nilai package name, version, description. Semua itu
+merupakan informasi dasar dari aplikasi yang kita buat.Nilai yang berada di dalam tanda kurung merupakan nilai default. Jika nilai default tersebut sudah cocok dengan yang kita harapkan, kita dapat menggunakan nilainya
+dengan langsung menekan tombol enter.Setelah mengisi seluruh pertanyaan yang diberikan, kita akan diberitahu untuk melihat hasil akhir yang dibuat pada berkas package.json.Jika nilai yang ditampilkan sudah sesuai, kita bisa langsung menekan tombol enter. Kemudian
+berkas package.json berhasil dibuat pada proyek kita.
+
+#kita juga dapat melihat ada folder baru bernama “node_modules” yang terbuat secara otomatis ketika berhasil memasang package. Di dalam folder tersebut,
+ terdapat folder proyek dari package yang kita pasang.
+
+7.)npm install <package-name> --save-dev
+install package sebagai objek devDependecies digunakan untuk mendaftarkan package yang digunakan hanya selama pengembangan saja. 
+Contohnya package yang berfungsi sebagai web server lokal seperti http-server, 
+atau package yang berfungsi untuk membundel JavaScript seperti webpack.
+
+8.)const moment = require('moment');
+Pada node application, kita dapat menggunakan package yang terpasang dengan mengimpornya.
+-keterangan :
+moment adalah package moment.js yang di install.
+Namun kode tersebut hanya akan bekerja pada environment Node.js, bukan pada browser. 
+Untuk melakukan impor node package pada browser, kita perlu tools tambahan seperti webpack.
+
+9.)localhost:5500/
+untuk jalankan fitur live server pada vscode.
+
+10.)npm run <script-name>
+Objek scripts merupakan objek yang mengandung kumpulan script di dalamnya. Script tersebut dapat dijalankan kapan saja pada proyek kita.
+Untuk menjalankannya, kita gunakan perintah ini.
+
+11.)npm run test
+Dengan menjalankan script test itu artinya kita mengeksekusi kode yang berada di dalam nilai test itu sendiri. Yaitu: "echo \"Error: no test specified\" && exit 1
+
+12.)npm uninstall <package-name>
+untuk menghapus package Jika package tersebut berada pada objek dependencies.
+
+13.)npm uninstall <package-name> --save-dev
+untuk menghapus package Jika package terdapat pada devDependencies.
+-keterangan :
+kita cukup menambahkan --save-dev di akhir perintahnya.
+
+#Dalam memasang package menggunakan npm sebenarnya terdapat dua cakupan lokasi yang dapat kita tetapkan. 
+ Selain cakupan lokal, kita juga dapat memasang package pada cakupan global.
+ Dengan memasang pada cakupan global, package dapat kita manfaatkan di mana saja atau pada proyek mana saja.
+
+14.)npm install <package-name> -g
+Untuk memasang package pada cakupan global, sama seperti memasang pada cakupan lokal. Kita gunakan perintah npm install <package-name> 
+namun dengan menambahkan -g pada akhir perintahnya. 
+contoh :
+npm install http-server -g
+
+#Memasang package pada cakupan global tidak akan menambahkan apapun pada berkas package.json proyek lokal. 
+Package tersebut dipasang pada directory global yang ditetapkan ketika kita memasang Node.js dan 
+lokasi default-nya ditetapkan berdasarkan OS yang digunakan.
+
+15.)npm list -g
+Pada Windows, lokasi default dari global modules adalah C -> Program Files -> nodejs -> node_modules. 
+Pada lokasi tersebut kita dapat melihat package apa saja yang dipasang dalam cakupan global. 
+Untuk melihat daftar package dalam cakupan global, kita juga dapat menggunakan perintah ini
+
+16.)npm list -g --depth=0
+sehingga untuk menampilkan list global package sebaiknya kita hanya tampilkan package yang berada pada layer atas saja. 
+Untuk melakukannya, kita dapat menggunakan perintah ini
+
+17.)cara install webpack :
+    npm install webpack --save-dev
+    npm install webpack-cli --save-dev
+
+ #Atau kita dapat menyingkat perintah tersebut dalam penulisan satu baris seperti ini:
+    npm install webpack webpack-cli --save-dev
+
+ #Untuk menjalankan webpack kita perlu menambahkan script dengan perintah webpack pada package.json seperti ini:
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "build": "webpack"
+    },
+
+18.)npm install style-loader css-loader --save-dev
+Style dan CSS Loader.
+Untuk menggunakan CSS modul pada webpack, kita membutuhkan dua buah loader. Yang pertama css-loader dan yang kedua style-loader. css-loader merupakan loader untuk memproses berkas dengan format .css. Sedangkan style-loader merupakan loader yang digunakan untuk membuat styling dapat diterapkan secara modular dengan menggunakan import statement. 
+Untuk menggunakan kedua loader tersebut, langkah pertama adalah memasangnya melalui npm dengan perintah ini. 
+
+19.)npm install @babel/core babel-loader @babel/preset-env --save-dev
+Untuk menggunakan babel pada webpack sebagai loader, 
+kita perlu memasang tiga package menggunakan npm pada devDependencies. 
+Yang pertama package @babel/core, yang kedua babel-loader, dan yang ketiga @babel/preset-env.
+
+ -keterangan :
+A)Package @babel/core merupakan package inti yang harus dipasang ketika kita hendak menggunakan babel, baik pada webpack maupun tools yang lain.
+B)Package babel-loader merupakan package yang diperlukan untuk menggunakan babel sebagai loader pada webpack.
+C)Yang terakhir package @babel/preset-env merupakan package preset yang akan kita gunakan untuk membantu babel-loader dalam melakukan tugasnya. @babel/preset-env merupakan preset cerdas yang memungkinkan kita menggunakan sintaks JavaScript terbaru tanpa menetapkan secara spesifik sintaks JavaScript versi apa yang kita gunakan.
+
+
+20.)cara install babel dinpm jika ada kendala eror
+- Hapus node_modules dan package-lock.json
+- Tambahkan (tulis) secara manual paket-paketnya di package.json sebagai berikut:
+    {
+      "name": "webclock",
+      "version": "1.0.0",
+      "description": "",
+      "main": "src/index.js",
+      "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "http-server .",
+        "build": "webpack"
+      },
+      "author": "",
+      "license": "ISC",
+      "dependencies": {
+        "jquery": "^3.4.1",
+        "moment": "^2.24.0"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.12.3",
+        "@babel/preset-env": "^7.12.1",
+        "babel-loader": "^8.1.0",
+        "css-loader": "^5.0.0",
+        "style-loader": "^2.0.0",
+        "webpack": "^5.1.3",
+        "webpack-cli": "^4.0.0"
+      }
+    }
+- Instal dengan npm i
+
+21.)npm install html-webpack-plugin --save-dev
+Ketika membuat web application tentunya kita membutuhkan minimal satu berkas HTML yang biasanya dinamai dengan index.html. Dengan menambahkan plugin HtmlWebpackPlugin, Webpack dapat membuatkan berkas HTML dan memasukkan script hasil bundel pada berkas HTML yang dibuat secara otomatis. HtmlWebpackPlugin juga mendukung templating dan penggunaannya sangat dapat dikonfigurasi.
+Untuk menggunakan html-webpack-plugin, langkah pertama adalah memasang package html-webpack-plugin pada devDependencies menggunakan npm.
+
+22.)npm install webpack-dev-server --save-dev
+Untunglah webpack menyediakan fitur live-reloading yang dapat mempercepat proses pengembangan menggunakan Webpack Dev Server. Dengan ini kita dapat melihat perubahan secara langsung tanpa harus menjalankan ulang perintah build.
+Untuk menggunakan Webpack Dev Server langkah pertama adalah kita pasang package webpack-dev-server pada devDependencies menggunakan npm.
+
+    
+23.)npm init --y
+--y pada akhir perintah tersebut berfungsi untuk menjawab seluruh pertanyaan yang diberikan NPM ketika membuat proyek baru dengan jawaban/nilai default.
+Jika Anda lebih suka menjawab pertanyaan-pertanyaan tersebut secara manual, silakan hapus --y pada perintah tersebut.
+    
+    
+
+    

@@ -8,10 +8,12 @@
     <ul id="post-list"></ul>
 
     <script>
+      // simpan api public pada variabel apiUrl
       const apiUrl = "https://jsonplaceholder.typicode.com/posts";
 
       // Fungsi untuk mengambil data dari API
       function fetchData() {
+        // letakkan variabel apiUrl tadi didalam fetch()
         fetch(apiUrl)
           .then((response) => response.json())
           .then((data) => {

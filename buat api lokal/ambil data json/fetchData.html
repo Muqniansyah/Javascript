@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetch data format json local</title>
+  </head>
+  <body>
+    <!-- buat tombol button dengan id getText -->
+    <button id="getText">Ambil data</button>
+
+    <!-- buat paragraf p dengan id output -->
+    <p id="output"></p>
+
+    <!-- javascript -->
+    <script>
+      // ambil id getText lalu beri event listener pada saat button di klik
+      document.getElementById("getText").addEventListener("click", () => {
+        // gunakan fetch pada ambil data (ambil data users.json)
+        fetch("users.json")
+          // kita buat response menjadi json atau kita dapatkan data yang dibutuhkan
+          .then((response) => response.json())
+          // lalu data kita ambil dan kita masukkan ke p dengan id output
+          .then((data) => {
+            // buat variabel output
+            let output = "<h2>Users</h2>";
+            // kita console.log agar mengetahui apakah data nya sudah masuk atau belum
+            console.log(data);
+
+            // buat looping untuk mengeluarkan data yang kita ambil
+            data.forEach((user) => {
+              // kita tambahkan output-nya jangan lupa gunakan backslash ``
+              // kita panggil id dan name didapat dari users.json
+              output += `
+						<ul>
+							<li>${user.id}</li>
+							<li>${user.name}</li>
+						</ul>
+					`;
+            });
+
+            // kita panggil id output paragraf agar bisa di tampilkan ke browser saat di klik
+            document.getElementById("output").innerHTML = output;
+          })
+          // membuat catch jadi kalau ada yang error langsung ketauan
+          .catch((error) => console.log(error));
+      });
+    </script>
+  </body>
+</html>

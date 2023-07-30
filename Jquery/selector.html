@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Selector</title>
+    <style>
+      .baru {
+        color: aqua;
+        font-size: 2rem;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- elemen yang akan dipanggil class -->
+    <div class="teks">ini adalah contoh teks</div>
+    <div class="teks2">ini adalah contoh teks</div>
+    <div class="teks3">ini adalah contoh teks</div>
+
+    <!-- elemen yang akan dipanggil elemen selector-->
+    <p class="baru">ini contoh teks</p>
+
+    <!-- elemen yang akan dipanggil id -->
+    <p id="huruf">ini contoh teks</p>
+
+    <!-- panggil library jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      // memanggil elemen menggunakan jquery berdasarkan class
+      const kata = $(".teks");
+      const kata2 = $(".teks2");
+      const kata3 = $(".teks3");
+
+      // memanggil elemen menggunakan jquery berdasarkan elemen selector
+      // removeClass()- Menghapus satu atau lebih kelas dari elemen yang dipilih
+      $("p").removeClass("baru");
+
+      // memanggil elemen menggunakan jquery berdasarkan id
+      const huruf = $("#huruf");
+      // text()- Mengatur atau mengembalikan konten teks dari elemen yang dipilih
+      huruf.text("teks diubah menggunakan jquery");
+
+      // manipulasi elemen dengan method css
+      kata.css("color", "red");
+      kata2.css({ color: "yellow", "background-color": "blue" });
+      // addClass() Menambahkan satu atau lebih kelas ke elemen yang dipilih
+      kata3.addClass("baru");
+    </script>
+  </body>
+</html>

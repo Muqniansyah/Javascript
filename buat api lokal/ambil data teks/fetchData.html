@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>fetch data format teks</title>
+  </head>
+  <body>
+    <!-- buat tombol button dengan id getText -->
+    <button id="getText">Ambil data</button>
+
+    <!-- buat paragraf p dengan id output -->
+    <p id="output"></p>
+
+    <!-- javascript -->
+    <script>
+      // ambil id getText lalu beri event listener pada saat button di klik
+      document.getElementById("getText").addEventListener("click", function () {
+        // gunakan fetch pada ambil data (ambil data sample.txt)
+        fetch("sample.txt")
+          // buat response jadi teks atau kita dapatkan data yang dibutuhkan
+          .then((response) => response.text())
+          // lalu data kita ambil dan masukkan ke p dengan id output
+          .then((data) => {
+            document.getElementById("output").innerHTML = data;
+          })
+          // membuat catch untuk menangani error
+          .catch((error) => {
+            console.log(error);
+          });
+      });
+    </script>
+  </body>
+</html>

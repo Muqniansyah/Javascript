@@ -1,0 +1,4 @@
+Muqniansyah arifin <br>
+cara jalankannya dengan fitur live server, karna terhalang dengan cors. <br>
+
+bisa menggunakan xampp, bisa menggunakan extension dari visual studio code yang bernama live server, atau bisa menggunakan node js.

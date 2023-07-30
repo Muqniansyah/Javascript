@@ -1,0 +1,19 @@
+{
+  "name": "javascript",
+  "version": "1.0.0",
+  "description": "dengan npm init kita akan bisa membuat file json dengan nama package.json",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Muqniansyah/Javascript.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Muqniansyah/Javascript/issues"
+  },
+  "homepage": "https://github.com/Muqniansyah/Javascript#readme"
+}

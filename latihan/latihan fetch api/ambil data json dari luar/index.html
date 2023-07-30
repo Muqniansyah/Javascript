@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ambil data json dari internet</title>
+  </head>
+  <body>
+    <!-- buat tombol button dengan id getPosts -->
+    <button id="getPosts">Ambil data json real</button>
+
+    <!-- buat paragraf p dengan id output -->
+    <p id="output"></p>
+
+    <script>
+      // ambil id getPosts lalu beri event listener pada saat button di klik
+      document
+        .getElementById("getPosts")
+        .addEventListener("click", function () {
+          // gunakan fetch pada ambil data (ambil data dari internet yaitu website jsonplaceholder)
+          fetch("https://jsonplaceholder.typicode.com/posts")
+            // kita buat response menjadi json atau kita dapatkan data yang dibutuhkan
+            .then((response) => response.json())
+            // lalu data kita ambil dan kita masukkan ke p dengan id output
+            .then((data) => {
+              // buat variabel output
+              let output = "<h2>posts</h2>";
+              // kita console.log agar mengetahui apakah data nya sudah masuk atau belum
+              console.log(data);
+
+              // buat looping untuk mengeluarkan data yang kita ambil
+              data.forEach((post) => {
+                // kita tambahkan output-nya jangan lupa gunakan backslash `` yang di sebelah angka nomer 1
+                // kita panggil id, name, dan email didapat dari post.json atau dari resources /posts
+                output += `
+						<div>
+              <h2>${post.id}</h2>
+							<h3>${post.title}</h3>
+							<p>${post.body}</p>
+						</div>
+					`;
+              });
+              // kita panggil id output paragraf agar bisa di tampilkan ke browser saat di klik
+              document.getElementById("output").innerHTML = output;
+            })
+            // membuat catch jadi kalau ada yang error langsung ketauan
+            .catch((error) => console.log(error));
+        });
+    </script>
+  </body>
+</html>
