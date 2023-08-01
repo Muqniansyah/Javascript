@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>set dan get</title>
+  </head>
+  <body>
+    <h1>Get</h1>
+    <!-- get 1 -->
+    <p class="satu">GET 1</p>
+    <!-- get2 -->
+    <p class="dua"><span>GET 2</span></p>
+    <!-- get 3 -->
+    <p>Name: <input type="text" id="test" value="GET 3" /></p>
+    <button id="btn-get">Show Value</button>
+    <!-- get 4 -->
+    <br /><br />
+    <a href="https://www.w3schools.com" id="w3s">W3Schools.com</a>
+
+    <br /><br /><br />
+    <hr />
+
+    <h1>Set</h1>
+    <!-- set 1 -->
+    <p id="test1">This is a paragraph.</p>
+    <p id="test2">This is another paragraph.</p>
+
+    <p>Input field: <input type="text" id="test3" value="Mickey Mouse" /></p>
+
+    <button id="btn1">Set Text</button>
+    <button id="btn2">Set HTML</button>
+    <button id="btn3">Set Value</button>
+    <br /><br /><br />
+
+    <!-- panggil cdn jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        // contoh get 1
+        // text()- Mengatur atau mengembalikan konten teks dari elemen yang dipilih
+        $(".satu").text("ini contoh get 1");
+
+        // contoh get 2
+        // html()- Mengatur atau mengembalikan konten elemen yang dipilih (termasuk markup HTML)
+        console.log($(".dua").html());
+
+        // contoh get 3
+        // val()- Menetapkan atau mengembalikan nilai bidang formulir
+        $("#btn-get").click(function () {
+          alert("Value: " + $("#test").val());
+        });
+
+        // contoh get 4
+        // attr()digunakan untuk mendapatkan nilai atribut.
+        $("a").click(function () {
+          alert($("#w3s").attr("href"));
+        });
+
+        // contoh set 1
+        $("#btn1").click(function () {
+          $("#test1").text("Hello world!");
+        });
+        $("#btn2").click(function () {
+          $("#test2").html("<b>Hello world!</b>");
+        });
+        $("#btn3").click(function () {
+          $("#test3").val("Dolly Duck");
+        });
+      });
+    </script>
+  </body>
+</html>

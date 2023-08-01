@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>effects dan animasi jquery</title>
+    <style>
+      /* styling untuk animasi 4 */
+      #panel,
+      #flip {
+        padding: 5px;
+        text-align: center;
+        background-color: #e5eecc;
+        border: solid 1px #c3c3c3;
+      }
+
+      #panel {
+        padding: 50px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- animasi 1 -->
+    <p>If you click on the "Hide" button, I will disappear.</p>
+    <button id="hide">Hide</button>
+    <button id="show">Show</button>
+    <br /><br />
+
+    <!-- animasi 2 -->
+    <button id="toggle">
+      Toggle between hiding and showing the paragraphs
+    </button>
+    <h4>This is a paragraph with little content.</h4>
+    <br /><br />
+    <!-- animasi 3 -->
+    <p>Demonstrate fadeOut() with different parameters.</p>
+    <button id="btn-1">Click to fade out boxes</button><br /><br />
+    <div
+      id="div1"
+      style="width: 80px; height: 80px; background-color: red"
+    ></div>
+    <br />
+    <div
+      id="div2"
+      style="width: 80px; height: 80px; background-color: green"
+    ></div>
+    <br />
+    <div
+      id="div3"
+      style="width: 80px; height: 80px; background-color: blue"
+    ></div>
+    <br /><br />
+
+    <!-- animasi 4 -->
+    <div id="flip">Click to slide down panel</div>
+    <div id="panel">Hello world!</div>
+    <br /><br />
+
+    <!-- animasi 5 -->
+    <button id="btn-2">Start Animation</button>
+    <p>
+      Secara default, semua elemen HTML memiliki posisi statis, dan tidak dapat
+      dipindahkan. Untuk memanipulasi posisi, ingatlah untuk terlebih dahulu
+      menyetel properti posisi CSS dari elemen ke relatif, tetap, atau absolut!
+    </p>
+    <div
+      style="
+        background: #98bf21;
+        height: 100px;
+        width: 100px;
+        position: absolute;
+      "
+      id="kotak"
+    ></div>
+    <br /><br />
+    <br /><br /><br /><br />
+
+    <!-- animasi 6 -->
+    <button id="btn-3">Start Animation</button>
+
+    <div
+      style="background: red; height: 100px; width: 100px; position: absolute"
+      id="kotak-1"
+    ></div>
+
+    <!-- panggil cdn jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(() => {
+        // animasi 1
+        $("#hide").click(function () {
+          $("p").hide(1000);
+        });
+        $("#show").click(function () {
+          $("p").show(2000);
+        });
+
+        // animasi 2
+        $("#toggle").click(function () {
+          $("h4").toggle(3000);
+        });
+
+        // animasi 3
+        $("#btn-1").click(function () {
+          $("#div1").fadeOut();
+          $("#div2").fadeOut("slow");
+          $("#div3").fadeOut(3000);
+        });
+
+        // animasi 4
+        $("#flip").click(function () {
+          $("#panel").slideDown("slow");
+        });
+
+        // animasi 5
+        $("#btn-2").click(function () {
+          $("#kotak").animate({
+            marginLeft: 20,
+          });
+        });
+
+        // animasi 6
+        $("#btn-3").click(function () {
+          $("#kotak-1").animate({
+            left: "250px",
+            opacity: "0.5",
+            height: "150px",
+            width: "150px",
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -27,25 +27,27 @@
     <!-- panggil library jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-      // memanggil elemen menggunakan jquery berdasarkan class
-      const kata = $(".teks");
-      const kata2 = $(".teks2");
-      const kata3 = $(".teks3");
+      $(document).ready(function () {
+        // memanggil elemen menggunakan jquery berdasarkan class
+        const kata = $(".teks");
+        const kata2 = $(".teks2");
+        const kata3 = $(".teks3");
 
-      // memanggil elemen menggunakan jquery berdasarkan elemen selector
-      // removeClass()- Menghapus satu atau lebih kelas dari elemen yang dipilih
-      $("p").removeClass("baru");
+        // memanggil elemen menggunakan jquery berdasarkan elemen selector
+        // removeClass()- Menghapus satu atau lebih kelas dari elemen yang dipilih
+        $("p").removeClass("baru");
 
-      // memanggil elemen menggunakan jquery berdasarkan id
-      const huruf = $("#huruf");
-      // text()- Mengatur atau mengembalikan konten teks dari elemen yang dipilih
-      huruf.text("teks diubah menggunakan jquery");
+        // memanggil elemen menggunakan jquery berdasarkan id
+        const huruf = $("#huruf");
+        // text()- Mengatur atau mengembalikan konten teks dari elemen yang dipilih
+        huruf.text("teks diubah menggunakan jquery");
 
-      // manipulasi elemen dengan method css
-      kata.css("color", "red");
-      kata2.css({ color: "yellow", "background-color": "blue" });
-      // addClass() Menambahkan satu atau lebih kelas ke elemen yang dipilih
-      kata3.addClass("baru");
+        // manipulasi elemen dengan method css
+        kata.css("color", "red");
+        kata2.css({ color: "yellow", "background-color": "blue" });
+        // addClass() Menambahkan satu atau lebih kelas ke elemen yang dipilih
+        kata3.addClass("baru");
+      });
     </script>
   </body>
 </html>

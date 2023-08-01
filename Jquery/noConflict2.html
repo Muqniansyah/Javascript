@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>no conflict() jquery</title>
+  </head>
+  <body>
+    <h1>Metode jQuery noConflict()</h1>
+    <p>
+      Seperti yang sudah Anda ketahui; jQuery menggunakan $tanda sebagai jalan
+      pintas untuk jQuery. Ada banyak framework JavaScript populer lainnya
+      seperti: Angular, Backbone, Ember, Knockout, dan lainnya. Bagaimana jika
+      framework JavaScript lain juga menggunakan tanda $ sebagai jalan pintas?
+      Jika dua kerangka kerja berbeda menggunakan pintasan yang sama, salah
+      satunya mungkin berhenti bekerja. Tim jQuery sudah memikirkan hal ini, dan
+      mengimplementasikan metodenya noConflict().
+    </p>
+
+    <!-- contoh 2 -->
+    <p>
+      Anda juga dapat membuat shortcut sendiri dengan sangat mudah. Metode
+      noConflict()mengembalikan referensi ke jQuery, yang dapat Anda simpan
+      dalam variabel, untuk digunakan nanti. Ini contohnya:
+    </p>
+
+    <p id="paragraph">This is a paragraph.</p>
+    <button id="btn">Test jQuery</button>
+
+    <!-- panggil cdn jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(() => {
+        // contoh 2
+        let jq = $.noConflict();
+
+        jq(document).ready(function () {
+          jq("#btn").click(function () {
+            jq("#paragraph").text("jQuery is still working!");
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

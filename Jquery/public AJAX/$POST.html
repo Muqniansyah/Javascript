@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jQuery $.post() Metode</title>
+  </head>
+  <body>
+    <h2>
+      Contoh berikut menggunakan $.post() metode untuk mengirim beberapa data
+      bersama dengan permintaan
+    </h2>
+
+    <button>
+      Kirim permintaan HTTP POST ke halaman dan dapatkan kembali hasilnya
+    </button>
+
+    <p>
+      Parameter pertama $.post()adalah URL yang ingin kami minta
+      ("https://jsonplaceholder.typicode.com/posts"). Kemudian kami mengirimkan
+      beberapa data untuk dikirim bersama dengan permintaan. Skrip di
+      "https://jsonplaceholder.typicode.com/posts" membaca parameter,
+      memprosesnya, dan mengembalikan hasilnya.
+    </p>
+
+    <!-- panggil cdn jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("button").click(function () {
+          $.post(
+            "https://jsonplaceholder.typicode.com/posts",
+            {
+              name: "Donald Duck",
+              city: "Duckburg",
+            },
+            function (data, status) {
+              alert("Data: " + data + "\nStatus: " + status);
+            }
+          );
+        });
+      });
+    </script>
+  </body>
+</html>

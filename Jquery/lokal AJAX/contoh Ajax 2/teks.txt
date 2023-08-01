@@ -1,0 +1,5 @@
+Dimungkinkan juga untuk menambahkan pemilih jQuery ke parameter URL.
+
+Contoh berikut memuat konten elemen dengan id="p1", di dalam file "teks.txt", ke dalam <div>elemen tertentu:
+
+<p id="p1">Ini adalah beberapa teks dalam sebuah paragraf.</p>

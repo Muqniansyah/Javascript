@@ -1,0 +1,6 @@
+<h2>jQuery and AJAX is FUN!!!</h2>
+<p id="p1">This is some text in a paragraph.</p>
+
+cara jalankannya dengan fitur live server, karna terhalang dengan cors. <br>
+
+bisa menggunakan xampp, bisa menggunakan extension dari visual studio code yang bernama live server, atau bisa menggunakan node js.

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plugin Jquery</title>
+    <!-- slick -->
+    <link rel="stylesheet" href="slick.css" />
+    <link rel="stylesheet" href="slick-theme.css" />
+    <!-- jquery ui -->
+    <link rel="stylesheet" href="jquery-ui.css" />
+  </head>
+  <body>
+    <!-- contoh 1 -->
+    <div class="your-class">
+      <div>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia
+        aliquam cumque perspiciatis nostrum quod dicta voluptatem magni quidem
+        quasi repellendus?
+      </div>
+      <div>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias
+        blanditiis id, placeat atque ipsa vitae iure accusantium distinctio,
+        velit mollitia, accusamus hic et. At alias veritatis ad quia, quibusdam
+        nam dolore ipsam. Neque, in sunt!
+      </div>
+      <div>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus,
+        magnam?
+      </div>
+    </div>
+
+    <!-- contoh 2 -->
+    <div id="dialog" title="Basic dialog">
+      <p>
+        This is the default dialog which is useful for displaying information.
+        The dialog window can be moved, resized and closed with the
+        &apos;x&apos; icon.
+      </p>
+    </div>
+
+    <!-- panggil cdn jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- slick -->
+    <script src="slick.min.js"></script>
+    <!-- jquery ui -->
+    <script src="jquery-ui.js"></script>
+    <script>
+      $(document).ready(() => {
+        // contoh 1
+        $(".your-class").slick({
+          dots: true,
+          infinite: true,
+          speed: 300,
+          slidesToShow: 1,
+          adaptiveHeight: true,
+        });
+
+        // contoh 2
+        $(function () {
+          $("#dialog").dialog();
+        });
+      });
+    </script>
+  </body>
+</html>

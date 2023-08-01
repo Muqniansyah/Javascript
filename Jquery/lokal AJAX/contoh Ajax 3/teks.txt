@@ -1,0 +1,7 @@
+1. responseTxt- berisi konten yang dihasilkan jika panggilan berhasil 
+<br>
+2. statusTxt- berisi status panggilan 
+<br>
+3. xhr- berisi objek XMLHttpRequest 
+<br>
+Contoh berikut menampilkan kotak peringatan setelah metode load() selesai. Jika load()metode tersebut berhasil, maka akan ditampilkan “External content loaded Successfully!”, dan jika gagal maka akan muncul pesan error.

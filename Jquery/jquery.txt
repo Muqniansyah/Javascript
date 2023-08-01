@@ -1,0 +1,119 @@
+1.) jquery adalah library dari javascript.
+
+2.) fungsi dari jquery yaitu :
+1. Menemukan elemen dalam dokumen html
+2. mengubah  konten html
+3. mendengarkan apa yang dilakukan pengguna dan melakukan tindakan yang sesuai (event listener)
+4. membuat animasi konten dihalaman
+5. berbicara melalui jaringan untuk mengambil konten baru (AJAX)
+
+3.) Sintaks jQuery :
+$(this).hide()- menyembunyikan elemen saat ini.
+
+$("p").hide()- menyembunyikan semua elemen <p>.
+
+$(".test").hide()- menyembunyikan semua elemen dengan class="test".
+
+$("#test").hide()- menyembunyikan elemen dengan id="test".
+
+
+4.) Mulai jquery dengan :
+$(document).ready(function(){
+
+  // jQuery methods go here...
+
+});
+
+Ini untuk mencegah kode jQuery apa pun berjalan sebelum dokumen selesai dimuat (siap).
+Merupakan praktik yang baik untuk menunggu dokumen terisi penuh dan siap sebelum bekerja dengannya. 
+
+Fungsi dari .ready() pada jQuery adalah untuk mengeksekusi kode JavaScript setelah seluruh DOM (Document Object Model) telah selesai dimuat atau ketika halaman web sudah siap untuk dimanipulasi.
+Namun, jika kita mencoba untuk memanipulasi elemen sebelum DOM selesai dimuat, elemen yang ditargetkan mungkin belum ada atau belum lengkap, dan operasi kita mungkin gagal. Untuk menghindari masalah ini, kita bisa menggunakan .ready() untuk memastikan bahwa kode JavaScript yang ingin kita jalankan dieksekusi setelah DOM selesai dimuat sepenuhnya.
+
+
+5.) event
+Mouse Events : click, dblclick, mouseenter, mouseleave
+mouseleave : keypress, keydown, keyup
+Form Events :   submit, change, focus, blur
+Document/Window Events : load, resize, scroll, unload
+
+6.) travesing (menjelajah elemen)
+.first(), .last(), .prev(), .next(), .children(), .find(), .parent()
+
+7.)effects dan animasi
+
+# tanpa animasi
+hide(kecepatan), show(kecepatan), toggle(kecepatan)
+
+# animasi slide
+slideDown(kecepatan), slideUp(kecepatan), slideToggle(kecepatan)
+
+Parameter kecepatan opsional menentukan durasi efek. Ini dapat mengambil nilai berikut: "slow", "fast", atau milidetik.
+Parameter callback opsional adalah fungsi yang akan dijalankan setelah fading selesai.
+
+# animasi fade
+fadeIn(kecepatan), fadeOut(kecepatan), fadeToggle(kecepatan), fadeTo(kecepatan, transparansi)
+
+Parameter kecepatan opsional menentukan durasi efek. Ini dapat mengambil nilai berikut: "slow", "fast", atau milidetik.
+Parameter callback opsional adalah fungsi yang akan dijalankan setelah fading selesai.
+
+# animasi via css (animasi custom dengan css)
+animate(parameter css, kecepatan)
+syarat : pada parameter css ditulis dengan penulisan camelCase
+contoh : 
+animate({
+  marginLeft: 20,
+});
+
+
+8.) plugin jquery
+- jquery ui
+- jquery slick
+- jquery popup
+- jquery upload file
+- dan masih banyak lagi (bisa dicari dengan keywoard "best jquery plugins")
+
+
+9.) AJAX
+-AJAX adalah seni bertukar data dengan server, dan memperbarui bagian halaman web - tanpa memuat ulang seluruh halaman.
+-AJAX = JavaScript dan XML asinkron.
+-Pendeknya; AJAX adalah tentang memuat data di latar belakang dan menampilkannya di halaman web, tanpa memuat ulang seluruh halaman.
+-Contoh aplikasi yang menggunakan AJAX: Gmail, Google Maps, Youtube, dan tab Facebook.
+-jQuery menyediakan beberapa metode untuk fungsionalitas AJAX.
+-Dengan metode jQuery AJAX, Anda dapat meminta teks, HTML, XML, atau JSON dari server jarak jauh menggunakan HTTP Get dan HTTP Post - Dan Anda dapat memuat data eksternal langsung ke elemen HTML yang dipilih di halaman web Anda!
+
+
+1. Metode jQuery load()adalah metode AJAX yang sederhana namun kuat.
+
+Metode load()memuat data dari server dan menempatkan data yang dikembalikan ke dalam elemen yang dipilih.
+
+Sintaksis:
+$(selector).load(URL,data);
+Parameter URL yang diperlukan menentukan URL yang ingin Anda muat.
+Parameter data opsional menentukan sekumpulan pasangan kunci/nilai querystring untuk dikirim bersama dengan permintaan.
+
+2. Metode jQuery get() dan post() digunakan untuk meminta data dari server dengan permintaan HTTP GET atau POST.
+
+Dua metode yang umum digunakan untuk permintaan-respons antara klien dan server adalah: GET dan POST.
+
+    1. GET : Meminta data dari sumber daya tertentu
+       GET pada dasarnya digunakan untuk mendapatkan (mengambil) beberapa data dari server. Catatan: Metode GET dapat mengembalikan data yang di-cache.
+
+    2. POST : Mengirimkan data untuk diproses ke sumber daya tertentu
+       POST juga dapat digunakan untuk mendapatkan beberapa data dari server. Namun, metode POST TIDAK PERNAH meng-cache data, dan sering digunakan untuk mengirim data bersama dengan permintaan.
+
+
+- jQuery $.get() Metode
+Metode ini $.get()meminta data dari server dengan permintaan HTTP GET.
+
+Sintaksis:
+$.get(URL);
+Parameter URL yang diperlukan menentukan URL yang ingin Anda minta.
+
+- jQuery $.post() Metode
+Metode ini $.post()meminta data dari server menggunakan permintaan HTTP POST.
+
+Sintaksis:
+$.post(URL,data);
+Parameter URL yang diperlukan menentukan URL yang ingin Anda minta.
+Parameter data opsional menentukan beberapa data untuk dikirim bersama dengan permintaan.

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Jquery</title>
+  </head>
+  <body>
+    <!-- event pertama -->
+    <button>Click me</button>
+
+    <!-- event kedua -->
+    <p>aku anak sehat</p>
+
+    <!-- event ketiga -->
+    <p id="p1">event mouseenter</p>
+
+    <!-- event keempat -->
+    <h4>event on</h4>
+
+    <!-- event kelima -->
+    <h5>event hover</h5>
+
+    <!-- panggil cdn jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        // .click() untuk menetapkan kejadian atau event klik
+        $("button").click(function () {
+          // $(this) digunakan untuk memilih elemen html saat ini
+          $(this).hide();
+        });
+
+        // .dblclick() untuk menetapkan kejadian atau event 2 kali klik
+        $("p").dblclick(function () {
+          $(this).hide();
+        });
+
+        //  mouseenter() ketika pointer mouse memasuki elemen HTML
+        $("#p1").mouseenter(function () {
+          console.log("berhasil");
+        });
+
+        // .on() melampirkan satu atau lebih event handler untuk elemen yang dipilih. biasanya lebih sering dipakai dalam membuat event.
+        $("h4").on("click", function () {
+          $(this).hide();
+        });
+
+        // hover()mengambil dua fungsi dan merupakan kombinasi dari metode mouseenter()dan mouseleave() .
+        // Fungsi pertama dijalankan saat mouse memasuki elemen HTML, dan fungsi kedua dijalankan saat mouse meninggalkan elemen HTML
+        $("h5").hover(
+          function () {
+            console.log("hello");
+          },
+          function () {
+            console.log("bye");
+          }
+        );
+      });
+    </script>
+  </body>
+</html>

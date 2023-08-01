@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>filter / mencari elemen tertentu</title>
+    <style>
+      /* style filter 1 */
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      td,
+      th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- filter 1 -->
+    <h2>Filterable Table</h2>
+    <p>
+      Ketikkan sesuatu di kolom input untuk mencari nama depan, nama belakang,
+      atau email di tabel:
+    </p>
+
+    <input id="myInput" type="text" placeholder="Search.." />
+    <br /><br />
+
+    <table>
+      <thead>
+        <tr>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody id="myTable">
+        <tr>
+          <td>John</td>
+          <td>Doe</td>
+          <td>john@example.com</td>
+        </tr>
+        <tr>
+          <td>Mary</td>
+          <td>Moe</td>
+          <td>mary@mail.com</td>
+        </tr>
+        <tr>
+          <td>July</td>
+          <td>Dooley</td>
+          <td>july@greatstuff.com</td>
+        </tr>
+        <tr>
+          <td>Anja</td>
+          <td>Ravendale</td>
+          <td>a_r@test.com</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>
+      Perhatikan bahwa kami memulai pencarian di tbody, untuk mencegah
+      pemfilteran header tabel.
+    </p>
+
+    <!-- filter 2 -->
+    <h2>Filterable List</h2>
+    <p>Ketikkan sesuatu di kolom input untuk mencari daftar item tertentu:</p>
+
+    <input id="thisInput" type="text" placeholder="Search.." />
+    <br />
+
+    <ul id="myList">
+      <li>First item</li>
+      <li>Second item</li>
+      <li>Third item</li>
+      <li>Fourth</li>
+    </ul>
+
+    <!-- filter 3 -->
+    <h2>Filter Anything</h2>
+    <p>
+      Ketikkan sesuatu di kolom input untuk mencari teks tertentu di dalam
+      elemen div dengan id="myDIV":
+    </p>
+    <input id="Input-me" type="text" placeholder="Search.." />
+
+    <div id="myDIV">
+      <p>I am a paragraph.</p>
+      <div>I am a div element inside div.</div>
+      <button>I am a button</button>
+      <button>Another button</button>
+      <p>Another paragraph.</p>
+    </div>
+
+    <!-- panggil cdn jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(() => {
+        // filter 1
+        // cari id myInput lalu berikan event keyup yang terjadi setiap kali pengguna melepaskan tombol setelah mengetik di dalam elemen input
+        $("#myInput").on("keyup", function () {
+          // buat variabel value yang berisi mengambil nilai inputan (dengan val()), yang diinputkan dari id myInput(pada code $(this)), lalu konversi nilai tersebut menjadi huruf kecil/lowercase(menggunakan .toLowerCase()).
+          let value = $(this).val().toLowerCase();
+          // cari id myTable tr (semua baris dalam table dengan id myTable), lalu kita menyaring elemen yang dipilih berdasarkan kondisi tertentu.
+          $("#myTable tr").filter(function () {
+            // $(this) merujuk pada setiap baris (elemen <tr>) dalam tabel
+            // $(this).text().toLowerCase() untuk mendapatkan teks dari elemen baris saat ini, lalu .indexOf(value): Mencari indeks dari "value"
+            // > -1: Jika kata kunci pencarian ditemukan dalam teks baris, maka hasil pencarian akan lebih besar dari -1, dan fungsi .toggle() akan menampilkan baris tersebut. Jika kata kunci tidak ditemukan, maka hasil pencarian akan -1, dan fungsi .toggle() akan menyembunyikan baris tersebut.
+            // Kondisi > -1 berarti jika kata kunci pencarian ditemukan dalam teks baris (indexOf() mengembalikan nilai lebih besar dari -1), maka baris tersebut akan ditampilkan. Namun, jika kata kunci tidak ditemukan (indexOf() mengembalikan -1), baris tersebut akan disembunyikan.
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+          });
+        });
+
+        // filter 2
+        $("#thisInput").on("keyup", function () {
+          let value = $(this).val().toLowerCase();
+          $("#myList li").filter(function () {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+          });
+        });
+
+        // filter 3
+        $("#Input-me").on("keyup", function () {
+          var value = $(this).val().toLowerCase();
+          $("#myDIV *").filter(function () {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

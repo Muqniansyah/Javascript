@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>traversing / menjelajah / mencari elemen</title>
+  </head>
+  <body>
+    <h2 class="judul">Menu restoran baru bangun</h2>
+    <ul id="hidangan">
+      <li>makanan</li>
+      <li>
+        minuman
+        <ul>
+          <li>jus</li>
+          <li>mineral</li>
+        </ul>
+      </li>
+      <li>buah</li>
+      <li>sayuran</li>
+    </ul>
+
+    <!-- pemanggilan library jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- javascript -->
+    <script>
+      $(document).ready(() => {
+        // mencari semua elemen li didalam ul dengan id hidangan
+        $("#hidangan li").css("color", "red");
+
+        // mencari hanya elemen anak(child)nya saja didalam elemen dengan id hidangan
+        $("#hidangan > li").css("color", "blue");
+
+        // memilih elemen pertama dalam list
+        // remove() menghapus elemen yang dipilih dan elemen anaknya.
+        $("#hidangan li:first").remove();
+
+        // memilih elemen terakhir dalam list
+        // after() menyisipkan konten SETELAH elemen HTML yang dipilih.
+        // before() menyisipkan konten SEBELUM elemen HTML yang dipilih.
+        $("#hidangan li:last").after("sesudah").before("sebelum");
+
+        // memilih elemen ganjil di list. index dimulai dari 0 bukan 1
+        $("#hidangan li:odd").css("background-color", "yellow");
+        // memilih elemen genap di list. index dimulai dari 0 bukan 1
+        $("#hidangan li:even").css("background-color", "grey");
+
+        // contoh traversing atau berjalan jalan di DOM
+        $("li").first().next().prev().css("font-size", "20px");
+
+        // contoh traversing atau berjalan jalan di DOM
+        // children()mengembalikan semua anak langsung dari elemen yang dipilih.Metode ini hanya melintasi satu tingkat di bawah pohon DOM.
+        $("#hidangan").children("li").css("font-weight", "bold");
+      });
+    </script>
+  </body>
+</html>

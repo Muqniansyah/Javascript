@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jQuery $.get() Metode</title>
+  </head>
+  <body>
+    <h2>
+      Contoh berikut menggunakan $.get() metode untuk mengambil data dari file
+      di server
+    </h2>
+
+    <button>
+      Kirim permintaan GET HTTP ke halaman dan dapatkan kembali hasilnya
+    </button>
+
+    <p>
+      Parameter pertama $.get()adalah URL yang ingin kami minta
+      ("https://pokeapi.co/api/v2/pokemon/ditto").
+    </p>
+
+    <!-- panggil cdn jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("button").click(function () {
+          $.get(
+            "https://pokeapi.co/api/v2/pokemon/ditto",
+            function (data, status) {
+              alert("Data: " + data + "\nStatus: " + status);
+            }
+          );
+        });
+      });
+    </script>
+  </body>
+</html>
