@@ -1,0 +1,24 @@
+[
+  {
+    "nama": "Muqniansyah",
+    "umur": 20,
+    "nip": "0809080",
+    "lulus": true,
+    "hobby": ["coding", "gaming", "basket"],
+    "pembimbing": {
+      "pembimbing1": "dea",
+      "pembimbing2": "dika"
+    }
+  },
+  {
+    "nama": "Arifin",
+    "umur": 20,
+    "nip": "0982627",
+    "lulus": true,
+    "hobby": ["coding", "gaming", "basket"],
+    "pembimbing": {
+      "pembimbing1": "dea",
+      "pembimbing2": "dika"
+    }
+  }
+]
