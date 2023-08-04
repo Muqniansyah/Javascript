@@ -12,9 +12,16 @@ function tampilkanSemuaMenu() {
     //   arti kode : ambil semua elemen pada menu, lalu tiap elemen pada menu berikan fungsi
     $.each(menu, function (index, data) {
       // cari id daftar menu lalu tambahkan diakhirnya dengan method .append() sebuah elemen baru yaitu : string html berbentuk card
-      // didalam append() jangan lupa untuk menghapus spasi dan enter supaya jadi string html. dan pastikan dimulai dengan kutip 1 karna htmlnya ada kutip 2 atau bisa pakai backslash. dan untuk memanggil objek json dengan memakai template literals.
+      // didalam append() jangan lupa untuk menghapus spasi dan enter supaya jadi string html. dan pastikan dimulai dengan kutip 1 karna htmlnya ada kutip 2 atau bisa pakai backtick. dan untuk memanggil objek json dengan memakai template literals.
       $("#daftar-menu").append(
-        `<div class="col-md-4"><div class="card mb-3" ><img src="img/menu/${data.gambar}" class="card-img-top"><div class="card-body"><h5 class="card-title">${data.nama}</h5><p class="card-text">${data.deskripsi}</p><h5 class="card-price">${data.harga}</h5><a href="#" class="btn btn-primary">Pesan Sekarang</a></div></div></div>`
+        `<div class="col-md-4"><div class="card mb-3" >
+          <img src="img/menu/${data.gambar}" class="card-img-top">
+          <div class="card-body"><h5 class="card-title">${data.nama}</h5>
+            <p class="card-text">${data.deskripsi}</p>
+            <h5 class="card-price">${data.harga}</h5>
+            <a href="#" class="btn btn-primary">Pesan Sekarang</a></div>
+          </div>
+        </div>`
       );
     });
   });
