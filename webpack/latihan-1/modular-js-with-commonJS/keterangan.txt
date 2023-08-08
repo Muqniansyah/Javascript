@@ -1,0 +1,7 @@
+ini adalah contoh apabila menggunakan module system javascript menggunakan common js yang diterapkan dalam 
+node js, yang apabila ingin berjalan disisi client (yaitu browser) perlu menggunakan module bundler. contoh 
+module bundler diantaranya adalah webpack. 
+
+- untuk sintaksnya :
+pakai module.exports => untuk exports 
+pakai require()  => untuk import

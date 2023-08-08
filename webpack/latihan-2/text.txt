@@ -1,0 +1,1 @@
+file latihan-2 berisi tentang cara penggunaan webpack dengan konfigurasi secara default.

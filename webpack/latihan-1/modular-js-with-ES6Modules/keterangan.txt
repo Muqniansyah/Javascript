@@ -1,0 +1,7 @@
+ini adalah contoh apabila menggunakan module system javascript menggunakan ES6 Modules yang diterapkan dalam 
+javascript itu sendiri, yang apabila ingin berjalan disisi client (yaitu browser)tidak perlu menggunakan module bundler. contoh 
+module bundler diantaranya adalah webpack. maka ES6 tidak butuh webpack, namun untuk berjalan dibrowser harus dengan live server.
+
+- untuk sintaksnya :
+pakai export => untuk export
+pakai import  => untuk import

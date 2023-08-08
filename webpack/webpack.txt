@@ -1,0 +1,115 @@
+ketika membuat program yang sederhana biasanya
+Seringkali kita membuat file yang berisi (utility, servie, pemanggilan dom, dll).
+Tak menjadi masalah akan hal itu, namun jika program yang kita buat semakin besar apalagi menggunakan framework/library dari pihak ketiga, bahkan memiliki sebuah tim untuk mengoperasikan code pada satu file yang sama, kita akan kesulitan menjaga code itu tetap terlihat rapi. Dan juga tidak mungkin jika disimpan dalam satu file dan dikeroyok satu file oleh berbagai programmernya. 
+Maka lebih baik jika dipisahkan menurut fungsinya masing masing. Yaitu satu file untuk utility, satu file untuk service, dan sebagainya. tapi masalahnya meski sudah dipisahkan satu per satu file sendiri, itu bukan menjadi javascript Modular. Karna pada bagian index.html kita tetap memanggil filenya satu persatu. alhasil sama saja dengan kita simpan pada satu file, bahkan kota memanggil banyak request dari yang sebelumnya hanya panggil 1 request dari file javascript. Maka dari itu ini belum Modular, belum menganut sistem Modular dari javascript.
+Karna untuk isolationnya bagus tapi untuk reusability dan organization kurang bagus. 
+
+Alasan menggunakan modul system
+1. Reusability
+Modul bisa digunakan kembali oleh bagian program lain, atau bisa menjadi package untuk App lain. 
+2. Isolation
+Satu modul mengerjakan hanya hal yg spesifik saja. Jika ada masalah pada modl maka tidak akan berdampak besar pagi program kita. 
+3. Organzation
+Kemudahan pengelolaan aplikasi secara menyeluruh. 
+
+Cara pakai Modular javascript
+- bisa dengan cara sycronous yaitu menggunakan common js yaitu penggunaan keywoard module.exports dan require() . Tapi sayangnya ia berjalan pada node js disisi server, jika ingin berjalan disisi client (contohnya browser) maka kita butuh module bundler, salah satunya module bundler adalah webpack. Alasannya supaya script module.exports dan require() diconvert atau dibundle jadi satu file javascript yang dipanggil didalam file html kita. 
+
+--bisa dengan cara Asynchronous yaitu menggunakan ES6 Module/Ecmascript harmony yaitu menggunakan keywoard exports dan import. ES6 Module tidak butuh module bundler jika ingin dijalankan di browser atau disi client. Namun jika pakai ES6 Module ia harus dijalankan dilive server atau dengan xampp, alasannya karna terhalang dengan cors jika dijalankan di browser. 
+
+
+
+# module bundler adalah sebuah tool yang mengambil code-code javascript yang kita gunakan (beserta dependency-nya)dan membundel/menggabungkan menjadi sebuah file(biasanya untuk digunakan di browser). Biasanya filenya ini file statis bentuknya javascript.
+
+Kelebihan module bundler :
+1. Melakukan penggabungan dan pengelolaan dependencies secara otomatis.
+2. Bahkan melakukan minify/uglify terhadap file agar ukurannya menjadi semakin kecil.
+
+Macam-macam module bundler :
+1. Browserify.org
+2. Webpack.js.org
+3. Rollupjs.org
+4. Parceljs.org
+5. Snowpack.dev
+6. Vitejs.dev
+
+Kelebihan webpack:
+Banyak yg pake, komunitasnya besar. 
+Kekurangan webpack:
+Semakin besar aplikasi, semakin banyak script yang kita punya, pada saat melakukan build maka webpack ini lebih lambat dari beberapa module bundler yg lain.
+
+
+Fitur fitur webpack :
+1. Depedency management
+2. Hot module replacement, yaitu ketika melakukan bundler hanya dimodule yg kita butuhkan saja. Tidak melakukan build/bundling diseluruh modulenya.
+3. Caching, untuk meningkatkan kecepatan.
+4. Support module, diantaranya : ES Modules, common js, AMD Modules.
+5. Transpile older js, yaitu menerjemahkan code ke versi javascript yg lama.
+6. Bundle Css dan Images, bisa secara terpisah atau digabung kedalam javascript.
+7. Asset optimization, contohnya optimasi ukuran gambar atu file.
+8. Meningkatkan produktivitas developer dan pengalaman.
+
+
+Komponen konfigurasi webpack :
+1. Enty, file apa yang menjadi entry
+2. Output, hasil akhir setelah di bundle
+3. Mode, ada mode production dan mode development
+4. Loaders
+5. Plugins
+6. Browser capability, menentukan browser apa saja yang ingin didukung.
+
+
+Instalasi webpack :
+npm install webpack webpack-cli --save-dev
+
+langkah installasi webpack:
+1. buat package.json dengan npm init -y
+2. lalu install webpack
+3. lalu ganti dipackage.json pada script, menjadi :
+"build" : "webpack" 
+4. lalu jalankan webpack dengan :
+npm run build
+5. jika sudah selesai maka nanti akan muncuk folder dist yang berisi file main.js yaitu hasil dari bundle atau hasil pembuatan webpacknya. jadi file script ini yang kita arahkan/include/masukkan pada file index.html kita. 
+
+#key private pada package.json berfungsi untuk supaya tidak terupload jika tidak sengaja. cara pakainya :
+"private" : true, 
+
+#saat pakai webpack setelah dibundle, jika terjadi perubahan dengan codenya maka kita harus jalanin perintah buildnya lagi(berada di script pada file pacakge.json). Cara jalaninnya buka terminal, lalu ketik ''npm run build'' tapi pastikan pada index.html mengarah pada tag script yg benar. dan nanti filenya akan merubah dengab menambahkan javascript yg baru kita rubah.
+tapi akan sangat merepotkan jika kita masih ingin selalu merubah javascriptnya, resikonya kita akan lakukan build berulang ulang. solusinya kita perintahkan webpacknya agar memperhatikan selalu apakah ada perubahan atau tidak. kalau ada perubahan maka akan dibundle ulang secara otomatis. caranya dengan menambahkan perintah watch.
+1.)cara 1: tambahkan discript package.json
+'' watch'' : ''webpack  --watch''
+cara jalaninnya dengan npm run watch, maka akan manggil webpack dengan tambahan argumen watch.
+2.)cara 2: simpan di konfigurasi webpack pada webpack.config.js
+tambahkan key baru berupa watch dan nilainya true :
+watch : true,
+
+# mengubah mode pada webpack
+1. mode production
+biasanya digunakan saat siap untuk digunakan ketika rilis aplikasi nya, dan code tidak bisa dibaca. caranya ganti pada konfigurasi webpack pada webpack.config.js :
+mode : '' production''
+
+2. mode development
+biasanya digunakan saat pembuatan aplikasi, dan code bisa dibaca.
+caranya ganti pada konfigurasi webpack pada webpack.config.js :
+mode : '' development''
+
+-untuk menghilangkan fungsi eval() yg berguna untuk optimasi pada mode development. maka caranya kita tambahkan konfigurasi webpack pada webpack.config.js dan letakkan didalam module. exports yang berupa :
+devtool : false, 
+- devtool berlaku untuk mode development. dan jika sudah selesai dan siap untuk dirilis, maka jangan lupa pindahkan ke mode production. untuk devtoolnya boleh dihapus atau tidak, karna jika sudah ganti ke mode production maka devtoolnya langsung tidak aktif. 
+
+#setiap kali kita rubah konfigurasi webpack pada webpack.config.js maka kita diharuskan build ulang. tapi jika yang berubah javascript kita tak perlu build ulang selama kita memakai perintah watch dalam build webpacknya.
+
+
+# minimizer
+plugin" untuk buat bubdle sizenya semakin kecil.
+1. css mininizer webpack plugin
+2. image mininizer webpack plugin
+
+#code splitting
+adalah salah satu fitu webpack yang memungkinkan kita memecah code menjadi bermacam macam bundle. berguna untuk load cepat, bubdle size kecil. 
+pendekatannya dengan cara:
+1. multiple entry point, yaitu bisa menambah entry point. 
+2. entry depedency, menghindari duplikasi. contohnya mebuat webpack punya bundle sendiri dan contoh lain css mempunyai bunde tersendiri juga. contoh ini dinamakan splitting code atau code splitting. 
+3. dynamic imports (kepake untuk framework) 
+
+

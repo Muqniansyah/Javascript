@@ -1,0 +1,7 @@
+dalam javscript module system, kode javascript sudah mencakup isolation yaitu membuat file berdasarkan 
+tugas dan fungsinya masing-masing. namun belum mencakup persayratan modul sytem lainnya yaitu reusability dan organization.
+masalahnya juga terletak pada pemanggilan file javascript di index.html, kita perlu memanggil banyak request
+atau lebih dari 1 request.
+
+syarat module system:
+reusability, isolation, dan organization.

@@ -1,0 +1,8 @@
+dalam javscript module system, kode javascript tidak mencakup isolation yaitu membuat file berdasarkan 
+tugas dan fungsinya masing-masing dan juga belum mencakup persayratan modul sytem lainnya yaitu reusability dan organization.
+jika program sudah lebih besar, bahkan memiliki sebuah tim, apalagi memakai framework atau library, maka akan 
+sangat kesulitan untuk menjaga programnya. dan juga tidak mungkin bila disimpan dalam 1 file dan 1 file tersebut dikeroyok
+oleh berbagai programmernya.
+
+syarat module system:
+reusability, isolation, dan organization.

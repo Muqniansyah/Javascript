@@ -1,0 +1,217 @@
+file latihan-3 berisi tentang cara penggunaan webpack dengan konfigurasi custom.
+
+1.) konfigurasi pertama, 
+ganti nama file main.js(default file hasil webpack) menjadi nama yang lain. bahkan mengganti
+nama folder dist(default folder hasil webpack) dengan nama yang lain juga.
+
+-untuk ganti nama folder
+argumen -o (nama path atau folder) 
+
+-untuk ganti nama file
+argumen --output-filename (file name)
+
+contoh :
+ "scripts": {
+    "build": "webpack -o ./final --output-filename bundle.js"
+  },
+
+2.) konfigurasi kedua,
+membuat file konfigurasi webpack diroot dari folder kita. yaitu dengan membuat file webpack.config.js, yang 
+didalamnya berupa konfigurasi webpack.
+
+kita juga bisa merubah nama file webpack.config.js menjadi nama yang lain, dengan cara yaitu membuat file 
+konfigurasi webpack diroot dari folder kita lagi dengan nama (contoh : mywebpack.config.js). lalu didalamnya berikan
+konfigurasi webpack, contoh :
+// untuk memanggil path atau alamat relatif dari folder output.
+const path = require("path");
+
+module.exports = {
+  // mode, defaultnya yaitu production
+  mode: "production",
+  // entry, yaitu file entry point
+  entry: "./src/index.js",
+  // output
+  output: {
+    // path atau ingin disimpan dimana
+    // path.resolve(__dirname), artinya agar relative dengan direktori kita. dan "output" untuk nama foldernya.
+    path: path.resolve(__dirname, "output"),
+    // filename, untuk nama filenya
+    filename: "bundle.js",
+  },
+};
+
+setelah itu dipackage.json di bagian scriptnya kita ganti pada pemanggilan webpack serta kita tambahkan argumen --config yang
+setelahnya berikan nama file confignya dan pada akhirnya akan menjadi seperti ini :
+"scripts": {
+    "build": "webpack --config mywebpack.config.js"
+  },
+
+3.) konfigurasi ketiga, 
+menggunakan fitur watch untuk memperhatikan selalu apabila ada perubahan pada file javascriptnya. jika ada perubahan 
+maka akan otomatis lakukan bundle ulang. caranya dengan tambahkan pada konfigurasi webpack di webpack.config.js
+dan letakkan didalam module.exports yang berupa :
+  watch: true,
+
+-ketik ctrl+c untuk menghentikan terminal atau fitur watch.
+
+4.) konfigurasi keempat,
+mengganti mode pada webpack. bisa menjadi mode production dan mode development. caranya dengan tambahkan pada konfigurasi webpack di webpack.config.js
+dan letakkan didalam module.exports yang berupa :
+  
+  mode: "production",
+
+atau
+
+  mode: "development",
+
+5.) konfigurasi kelima,
+menggunakan loaders. loaders adalah sebuah fitur untuk lakukan bundle pada sumberdaya statis selain javascript (contoh : css, sass, bootstrap, dan lainnya).
+karena pada dasarnya webpack hanya membundle file javascript saja, maka dengan loaders kita bisa membundle file lainnya.
+
+A. loaders css, caranya :
+-buat file css beserta stylenya didalamnya
+-lakukan import file cssnya ke file javascript
+-install package css loadersnya, dengan perintah :
+  npm install css-loader --save-dev
+- atau bisa juga dengan perintah :
+  npm i css-loader -D
+-modifikasi file webpack.config.js, caranya dengan tambahkan pada konfigurasi webpack di webpack.config.js
+dan letakkan didalam module.exports yang berupa :
+  
+// css loaders
+  module: {
+    rules: [
+      {
+        // untuk mengecek extensi file, caranya dengan regular expression yaitu //i didalamnya berikan file jenis css lalu setelahnya berikan dolar($).
+        test: /\.css$/i,
+        // untuk menggunakan css-loadersnya
+        use: ["css-loader"],
+      },
+    ],
+  },
+
+-setelah itu kita install style-loader, untuk terapkan file css kedalam DOM atau untuk menambahkan sebuah export untuk module sebagai style kedalam dom kita.
+karna css-loader hanya membundle saja file cssnya dan kita perlu terapkan file css kedalam DOM, maka kita perlu install style-loader.
+cara installnya :
+
+npm install --save-dev style-loader
+
+-lalu tambahkan dikonfigurasi webpack di webpack.config.js dan letakkan didalam module.exports, dan letakkan sebelum css-loader yang berupa :
+
+// css loaders
+  module: {
+    rules: [
+      {
+        // untuk mengecek extensi file, caranya dengan regular expression yaitu //i didalamnya berikan file jenis css lalu setelahnya berikan dolar($).
+        test: /\.css$/i,
+        // untuk menggunakan css-loadersnya
+        use: ["style-loader", "css-loader"],
+      },
+    ],
+  },
+
+-jadi css-loader dan style-loader digunakan bersamaan atau berpasangan saat kita ingin menerapkan css loaders.
+
+
+
+
+B. babel loader, babel loader digunakan untuk membuat file hasil bundlenya bisa disupport oleh browser versi lama atau terdahulu.
+jadi kita akan ubah javascript ke versi lama agar disupport oleh browser lama maupun baru.
+caranya :
+-install package dari babel loader, cara installnya :
+  npm install -D babel-loader @babel/core @babel/preset-env
+-modifikasi file webpack.config.js, caranya dengan tambahkan pada konfigurasi webpack di webpack.config.js
+dan letakkan didalam module.exports yang didalamnya ada module dan didalamnya rules yang berupa :
+
+  module: {
+    rules: [
+      // css loaders
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
+      // babel -loader
+      {
+        // testnya untuk file mjs atau js
+        test: /\.(?:js|mjs|cjs)$/,
+        // exclude yang berarti jika ada file javascript dinode_modules jangan ikut dibundle
+        exclude: /node_modules/,
+        //untuk gunakan babel-loader
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: [["@babel/preset-env", { targets: "defaults" }]],
+          },
+        },
+      },
+    ],
+  },
+
+-setelah itu jalankan dengan perintah :
+npm run build
+
+C.sass - loader. caranya hampir sama, yaitu:
+-buat file sass
+-import file sass di javascript
+-install sass -loader, dengan :
+npm install sass-loader sass --save-dev
+-tambahkan rules baru di webpack.config.js, berupa :
+module: {
+    rules: [
+      {
+        // untuk mengecek extensi file, caranya dengan regular expression yaitu //i didalamnya berikan file jenis css lalu setelahnya berikan dolar($).
+        test: /\.css$/i,
+        // untuk menggunakan css-loadersnya
+        use: ["style-loader", "css-loader"],
+      },
+      // babel -loader
+      {
+        // testnya untuk file mjs atau js
+        test: /\.(?:js|mjs|cjs)$/,
+        // exclude yang berarti jika ada file javascript dinode_modules jangan ikut dibundle
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: [["@babel/preset-env", { targets: "defaults" }]],
+          },
+        },
+      },
+      // sass - loader
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          // Creates `style` nodes from JS strings atau bikin tag style dan masukkan kedalam dom nya.
+          "style-loader",
+          // Translates CSS into CommonJS atau bundle css ke javascriptnya
+          "css-loader",
+          // Compiles Sass to CSS
+          "sass-loader",
+        ],
+      },
+    ],
+  },
+
+-setelah itu jalankan dengan perintah :
+npm run build
+
+-jangan lupa ketika menggunakan sass loader berarti harus menghapus rules untuk css-loader
+
+D. framework bootstrap loader, caranya :
+-download file bootstrap terlebih dahulu, karna tidak bisa menggunakan cdn. caranya dengan :
+  npm install bootstrap --save-dev
+
+-lakukan import scss atau cssnya bootstrap (letakkan pada file style.scss atau style.css). dengan cara :
+  @import "bootstrap/scss/bootstrap"
+
+-lakukan import javascriptnya bootstrap (letakkan pada file index.js). dengan cara :
+  import * as bootstrap from "bootstrap";
+
+arti : import semua yang ada didalam folder bootstrap. from "bootstrap", diambil dari folder node_modules karna tidak ada root(./).
+
+-hapus link css dan script javascript dari bootstrap pada index.html
+
+-setelah itu jalankan dengan perintah :
+npm run build
+
+
