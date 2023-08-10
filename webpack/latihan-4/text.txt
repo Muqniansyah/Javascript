@@ -1,0 +1,237 @@
+konfigurasi webpack kompleks
+
+1.) konfigurasi pertama,
+assets management, yaitu tentang bagaimana cara mengelola assets" statis menggunakan webpack.
+
+A. memisahkan bundle file css terpisah dengan javascript. caranya :
+- download package MiniCssExtractPlugin pada webpack, yaitu dengan :
+  npm install --save-dev mini-css-extract-plugin
+- lakukan import pada package didalam file webpack.config.js, yang berupa :
+  const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+-letakkan plugin didalam file webpack.config.js pada module.exports, berupa :
+  plugins: [new MiniCssExtractPlugin()],
+-maka akan jadi seperti ini :
+plugins: [
+    // plugin html webpack plugin
+    new HtmlWebpackPlugin({
+      // arahkan pada file template html
+      template: "./src/template.html",
+    }),
+    // plugin mini css extract plugin
+    new MiniCssExtractPlugin(),
+  ],
+
+-tambahkan rules pada module didalam module.exports pada file webpack.config.js, berupa :
+  {
+    test: /\.css$/i,
+    use: [MiniCssExtractPlugin.loader, "css-loader"],
+  },
+-lalu jalankan dengan npm run build
+
+#cara agar file cssnya memiliki hash:
+-masuk ke file webpack.config.js lalu hapus bagian plugin dari mini css extract, berupa :
+    new MiniCssExtractPlugin(),
+-didalam file webpack.config.js hanya seperti ini pluginnya :
+plugins: [
+    // plugin html webpack plugin
+    new HtmlWebpackPlugin({
+      // arahkan pada file template html
+      template: "./src/template.html",
+    }),
+  ],
+-lalu dalam file webpack.prod.js atau file mode production, berikan plugin mini css extract. berupa :
+  plugins: [
+    // plugin mini css extract plugin
+    new MiniCssExtractPlugin({
+      // .[contenthash] tujuannya supaya setiap dibundle output filenya namanya berubah.
+    filename: "main.[contenthash].css",
+    }),
+  ],
+-lalu dalam file webpack.dev.js atau file mode development, berikan plugin mini css extract tapi tanpa 
+option contenthash. supaya hasil bundle tidak ada hash/angka pada filenya. sehingga menjadi :
+   plugins: [
+    // plugin mini css extract plugin
+    new MiniCssExtractPlugin(),
+  ],
+-lalu pindahkan import package mini css extract plugin pada file webpack.config.js ke file webpack.prod.js dan file
+webpack.dev.js
+- lalu jika ada kendala maka pindahkan loaders yang berada pada file webpack.config.js ke file webpack.prod.js dan file
+webpack.dev.js, yang berupa contoh loaders:
+module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        // gunakan plugin loader
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
+      },
+    ],
+  },
+-lalu jalankan webpack dengan npm run build atau npm run dev.
+
+2.) membuat web server dari webpack untuk melihat hasil setelah build. webpack menjalankan server menggunakan api nodejs, dengan cara :
+- install package
+npm install --save-dev webpack-dev-server
+-konfigurasi server dengan melihat dokumentasi di devServer pada webpack. lalu letakkan pad file webpack.config.js didalam module.exports, berupa :
+
+ devServer: {
+    static: {
+      //nama folder bisa disesuaikan setelah __dirname
+      directory: path.join(__dirname, 'public'),
+    },
+    compress: true,
+    port: 9000,
+     // supaya jalankan live server
+    liveReload: true,
+  },
+
+- hapus fitur watchnya pad webpack.config.js
+-tambahkan script baru untuk jalankan server webpack pada package.json, berupa :
+"serve": "webpack serve"
+-maka script akan menjadi seperti ini :
+"scripts": {
+    "build": "webpack",
+    "serve": "webpack serve --config webpack.dev.js"
+  },
+-artinya : kita menjalankan webpack serve atau webpack server dengan tambahan argumen --config dan file webpack.dev.js. maka kita akan
+menjalankan server webpack pada konfigurasi dari file webpack.dev.js
+-lalu jalankan dengan npm run serve
+-tapi jika ada perubahan harus lakukan build ulang webpack dengan perintah npm run build atau npm run dev. tujuannya
+supaya hasil bundle webpack ikut berubah. karna server webpack hanya menampilkan hasil perubahan dengan otomatis tetapi belum dibundle,
+sama seperti fitur watch webpack.
+
+3.)konfigurasi ketiga,
+membundle asset dari gambar. dengan cara 2 buah loader yaitu html-loader dan file-loader, yaitu caranya:
+-html loader, fungsinya untuk mengatur asset dari gambar. caranya yaitu : 
+-install package, yaitu :
+  npm install --save-dev html-loader
+-tambahkan rules didalam module pada module.exports, bisa diletakkan pada file konfigurasi umum atau file mode development maupun production yang berupa :
+      {
+        //artinya jika ada file html, maka jalankan html-loader agar atribut src bisa dibundle juga.
+        test: /\.html$/i,
+        loader: "html-loader",
+      },
+-tambahkan pengelolaan asset yang lain, dengan cara file-loader. tapi kini file-loader bisa diganti dengan menambahkan asset/resource.
+cara pemakaiannya dengan menambahkan rules baru didalam module pada module.exports, bisa diletakkan pada file konfigurasi umum atau file mode development maupun production yang berupa :
+      {
+        //artinya jika ada file png,jpg,jpeg,gif,svg anggap sebagai asset/resource yang akan dibuatkan filenya difolder dist(folder hasil bundle).
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        type: "asset/resource",
+      },
+-tentukan tampat penyimpanan pada folder dist yang akan dibundle nantinya dengan cara :
+tambahkan dibagian output pada file konfigurasi umum atau file mode development maupun production yang berupa :
+a. jika ingin ada hash/angka pada filenya :
+      // untuk membuat nama file pada gambar memiliki hash/angka
+    assetModuleFilename: "img/[hash][ext]",
+b. jika ingin tidak ada hash/angka pada filenya :
+      // untuk membuat nama file pada gambar tidak memiliki hash/angka
+    assetModuleFilename: "img/[name][ext]",
+-lalu jalankan webpack dengan perintah npm run build atau npm run dev.
+
+4.) konfigurasi keempat,
+caching adalah sebuah teknik untuk menyimpan data didalam komponen hardware atau software, dilakukan agar request(berikutnya) untuk data 
+tersebut terjadi dengan lebih cepat. teknik caching juga memungkinkan website melakukan load dengan lebih cepat dengan traffic network yang lebih kecil.
+refresh biasa (ctrl+r). hard refresh(ctrl+shift+r) agar membersihkan juga cachenya.
+-caranya untuk melakukan cache :
+output filenames, mengubah nama file output. sehingga nama file outputnya akan disisipkan content-hash yang menyebabkan
+nama file akan ada angka"nya/hashnya. langkah" penggunaannya :
+a.  pada webpack.config.js lakukan konfigurasi yang berupa :
+
+output: {
+    path: path.resolve(__dirname, "dist"),
+    // .[contenthash] tujuannya supaya setiap dibundle output filenya namanya berubah.
+    filename: "main.[contenthash].js",
+  },
+
+b. lakukan jalankan webpack dengan npm run build. setelah dibuild maka akan menghasilkan folder dist 
+yang didalamnya memiliki file javascript yang berupa angka/hash. jadi ketika difile kita ada perubahan, maka browsernya akan tahu bahwa
+ini bukan file yang sam dengan file yang sebelumnya. tapi masih ada 2 masalah, yaitu :
+dibagian index.html kita menuliskan secara manual, maka jika hasil bundle javascript berubah kita harus mengganti pemanggilan script javascript
+pada index.html secara manual. masalah kedua yaitu ketika mengubah isi dari file javascript ketika dibundle ulang karna ada perubahan
+maka akan menghasilkan file bundle baru.
+
+#perbaiki maslah yang pertama:
+dengan mengenerate/ dibuatkan file html secara otomatis oleh webpacknya. file index.html kita minta untuk dibuatkan oleh webpack beserta dengan link 
+kescript javascriptnya. untuk itu kita perlu plugin yaitu HtmlWebpackPlugin.
+
+HtmlWebpackPlugin, fungsinya dengan mudah membuat file html untuk menyajikan bundle kita. jadi nanti yang dibundle oleh webpack tidak hanya javascript melainkan html juga dibundle. 
+caranya yaitu :
+-install package, yaitu :
+  npm install --save-dev html-webpack-plugin
+-import package dalam file webpack.config.js yang berupa :
+  const HtmlWebpackPlugin = require("html-webpack-plugin");
+-letakkan plugin didalam file webpack.config.js pada module.exports, berupa :
+plugins: [new HtmlWebpackPlugin()]
+-yang terjadi nanti akan dibuatkan file html di folder dist, namun di file html pada folder dist code html yang kita buat akan hilang tidak ikut dibundle.
+solusinya maka harus buat file template dan file tersebut akan dieksekusi sebagai file index didalam folder dist yang dibundle. caranya :
+buat file baru didalam folder src dengan nama template.html yang isinya samakan dulu dengan file index.html. lalu pada 
+tempalte.html kita hapus pemanggilan script javascript. (dan nanti file index.htmlnya boleh saja dihapus tapi yang bukan pada folder dist).
+-lalu tambahkan option pada file webpack.config.js yang berupa :
+plugins: [
+    new HtmlWebpackPlugin({
+      // arahkan pada file template html
+      template: "./src/template.html",
+    }),
+  ],
+-lalu coba jalankan webpack dengan npm run build
+
+#perbaiki masalah yang kedua:
+-masuk ke file webpack.config.js lalu pada bagian output didalam module.exports kita tambahkan sebuah key baru bernama clean. hasilnya sebagai berikut:
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    // .[contenthash] tujuannya supaya setiap dibundle output filenya namanya berubah.
+    filename: "main.[contenthash].js",
+    // untuk membersihkan file" bundle sebelumnya akan dihapus yang memiliki hash/angka pada filenya.
+    clean: true,
+  },
+-lalu jalankan webpack dengan npm run build
+
+5.) konfigurasi kelima,
+membuat konfigurasi yang berbeda untuk mode yang berbeda pada tahap pembangunan aplikasi kita.
+jadi kita akan mempunyai 2 mode tanpa mengganti confignya di file webpack.config.js, lalu mode akan dirubah 
+ketika kita panggil modenya diperintah terminalnya.
+caranya :
+-buat file konfigurasi baru webpack.prod.js yang berguna untuk webpack mode production
+-buat file konfigurasi baru webpack.dev.js yang berguna untuk webpack mode development
+-intinya kita akan gabungkan ketika konfigurasi webpack. konfigurasi umum akan disimpan di webpack.config.js,
+lalu konfigurasi mode development ada pada file webpack.dev.js, dan konfigurasi mode production ada pada file 
+webpack.prod.js
+-lalu pada konfigurasi umum, kita akan hapus modenya. dan pada output kita akan buat pada konfigurasi mode 
+production pakai contenthash tapi mode development tanpa contenthash.
+-selanjutnya atur mode pada konfigurasi development dan production. yaitu bisa dengan hapus entry, plugins loader, import package, 
+atau bisa juga dengan menambahkan output, dan lainnya sesuai kebutuhan.
+-lalu kita akan menggambungkan ketika konfigurasi webpack. caranya dengan sebuah webpack tools yaitu bernama webpack merge.
+tujuannya webpack merge untuk menggambungkan 2 konfigurasi. yaitu caranya :
+  -install package, yaitu :
+    npm install webpack-merge --save-dev
+  -lalu kita import difile yang dibutuhkan, yaitu di file konfigurasi development dan production. yang berupa :
+    const { merge } = require('webpack-merge');
+  -lalu kita akan merge file mode development dengan webpack.config.js dan file mode production dengan webpack.config.js
+  -import file webpack.config.js pada file mode development dan production, yang berupa :
+    const config = require("./webpack.config");
+  -lalu kita hubungkan dengan cara pada file mode production yaitu webpack.prod.js, lakukan :
+    cara gabungkan yaitu dengan ketik merge sebelum objek lalu berikan kurung buka dan didalamnya letakkan file yang ingin digabung lalu berikan koma.
+    dan jangan lupa berikan kurung tutupnya sebelum titik koma. sehingga codenya seperti ini :
+      module.exports = merge(config, {
+        mode: "production",
+        output: {
+        path: path.resolve(__dirname, "dist"),
+          // .[contenthash] tujuannya supaya setiap dibundle output filenya namanya berubah.
+        filename: "main.[contenthash].js",
+          // untuk membersihkan file" bundle sebelumnya akan dihapus yang memiliki hash/angka pada filenya.
+        clean: true,
+        },
+      });
+  -sehingga nanti file webpack.config.js akan tergabung dengan file webpack.prod.js
+  -lalu lakukan hal yang sama pada file mode development yaitu webpack.dev.js, sehingga nanti file webpack.config.js akan tergabung dengan file webpack.dev.js
+  -sebelum dijalankan, kita edit script pada package.json sehinnga cara memanggil/menjalankannya berbeda. yang berupa :
+    "scripts": {
+    //untuk memanggil file konfigurasi mode production, caranya berikan argumen --config lalu nama filenya.
+    "build": "webpack --config webpack.prod.js",
+    //untuk memanggil file konfigurasi mode development, caranya berikan argumen --config lalu nama filenya.
+    "dev": "webpack --config webpack.dev.js",
+    //untuk menjalankan server webpack
+    "serve": "webpack serve"
+  },
+  -lalu jalankan webpack sesuai dengan mode yang diinginkan. contoh :
+  mode development = npm run dev
+  mode production = npm run build
