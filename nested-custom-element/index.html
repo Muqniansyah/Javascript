@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nested Custom Element</title>
+  </head>
+  <body>
+    <!-- Contoh custom element utama -->
+    <my-container>
+      <!-- Contoh custom element bertingkat -->
+      <my-header></my-header>
+      <my-content></my-content>
+      <my-footer></my-footer>
+    </my-container>
+
+    <br /><br />
+    <p>
+      Elemen 'slot' atau tag slot adalah elemen HTML yang digunakan dalam
+      konteks Shadow DOM. Ini digunakan untuk memasukkan konten dari luar shadow
+      DOM ke dalam shadow DOM. Dengan kata lain, 'slot' memungkinkan Anda
+      menentukan area di dalam shadow DOM yang akan diisi dengan konten dari
+      luar elemen shadow DOM itu sendiri. Contoh penggunaan umum dari 'slot'
+      adalah ketika Anda memiliki custom element yang memiliki tampilan yang
+      sudah dibuat (biasanya dengan HTML dan CSS) dan Anda ingin mengizinkan
+      pengguna custom element tersebut untuk menempatkan konten HTML apa pun di
+      dalamnya.
+    </p>
+
+    <script>
+      // Membuat custom element 'my-container'
+      class MyContainer extends HTMLElement {
+        constructor() {
+          super();
+          // Membuat shadow DOM untuk elemen ini
+          const shadow = this.attachShadow({ mode: "open" });
+          // Menambahkan elemen div ke dalam shadow DOM dengan border dan slot.  elemen <slot>, yang akan menampung elemen-elemen anak yang ditempatkan di dalam <my-container>
+          shadow.innerHTML = `
+                    <div style="border: 1px solid #000; padding: 10px;">
+                        <slot></slot>
+                    </div>
+                `;
+        }
+      }
+      customElements.define("my-container", MyContainer);
+
+      // Pembuatan Custom Element my-header, my-content, dan my-footer dilakukan dengan cara yang serupa. Ini adalah elemen-elemen anak yang ditempatkan di dalam <my-container>.
+      // Membuat custom element 'my-header'
+      class MyHeader extends HTMLElement {
+        constructor() {
+          super();
+          const shadow = this.attachShadow({ mode: "open" });
+          shadow.innerHTML = `
+                    <div style="background-color: #ccc; padding: 10px;">
+                        <h1>Header</h1>
+                    </div>
+                `;
+        }
+      }
+      customElements.define("my-header", MyHeader);
+
+      // Membuat custom element 'my-content'
+      class MyContent extends HTMLElement {
+        constructor() {
+          super();
+          const shadow = this.attachShadow({ mode: "open" });
+          shadow.innerHTML = `
+                    <div style="padding: 10px;">
+                        <p>Ini adalah konten.</p>
+                    </div>
+                `;
+        }
+      }
+      customElements.define("my-content", MyContent);
+
+      // Membuat custom element 'my-footer'
+      class MyFooter extends HTMLElement {
+        constructor() {
+          super();
+          const shadow = this.attachShadow({ mode: "open" });
+          shadow.innerHTML = `
+                    <div style="background-color: #ccc; padding: 10px;">
+                        <p>Footer</p>
+                    </div>
+                `;
+        }
+      }
+      customElements.define("my-footer", MyFooter);
+    </script>
+  </body>
+</html>

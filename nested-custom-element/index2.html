@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tag slot</title>
+  </head>
+  <body>
+    <p>
+      meskipun elemen 'slot' atau tag slot seringkali dikaitkan dengan
+      penggunaan Shadow DOM pada custom element, namun itu tidak terbatas hanya
+      pada custom element. Anda juga dapat menggunakan elemen 'slot' dalam
+      konteks Shadow DOM pada elemen HTML standar. Anda bisa membuat shadow DOM
+      pada elemen HTML apa pun (termasuk elemen standar seperti tag div, tag p,
+      dll.) dengan menggunakan JavaScript, dan dalam shadow DOM tersebut, Anda
+      masih dapat menggunakan elemen 'slot' untuk memasukkan konten dari luar
+      shadow DOM.
+    </p>
+
+    <div id="container"></div>
+
+    <p>
+      Dalam contoh di atas, kami membuat shadow DOM pada elemen tag div dengan
+      ID "container". Kami juga menambahkan elemen tag slot ke dalam shadow DOM
+      tersebut. Kemudian, dengan mengatur container.innerHTML, kami memasukkan
+      konten dari luar shadow DOM ke dalam elemen slot. Jadi, meskipun elemen
+      tag slot sering digunakan dalam konteks custom element dengan Shadow DOM,
+      namun Anda juga dapat menggunakannya dalam konteks Shadow DOM pada elemen
+      HTML standar.
+    </p>
+
+    <p>
+      tag slot itu tidak terlihat namun ada. Elemen 'slot' atau tag slot adalah
+      elemen HTML yang biasanya tidak terlihat secara visual dalam hal tampilan
+      di browser. Elemen ini berfungsi sebagai titik masuk (placeholder) untuk
+      konten yang akan dimasukkan ke dalamnya dari luar Shadow DOM. Elemen
+      'slot' berguna ketika Anda ingin menciptakan komponen yang dapat menerima
+      konten tambahan dari luar komponen tersebut melalui slot tersebut. Konten
+      yang dimasukkan melalui elemen 'slot' akan ditampilkan dalam komponen yang
+      menggunakan Shadow DOM pada posisi di mana elemen 'slot' ditempatkan dalam
+      Shadow DOM. Sebagai contoh, jika Anda memiliki custom element seperti
+      'my-component' yang menggunakan Shadow DOM, Anda dapat menempatkan elemen
+      'slot' di dalam Shadow DOM tersebut untuk memungkinkan pengguna komponen
+      tersebut untuk menyisipkan konten tambahan. Namun, elemen 'slot' itu
+      sendiri tidak terlihat saat dilihat di browser, tetapi memiliki peran yang
+      penting dalam komponen tersebut.
+    </p>
+
+    <script>
+      const container = document.querySelector("#container");
+
+      // Buat shadow DOM pada elemen div
+      const shadowRoot = container.attachShadow({ mode: "open" });
+
+      // Definisikan elemen slot di dalam shadow DOM
+      const slot = document.createElement("slot");
+      shadowRoot.appendChild(slot);
+
+      // Masukkan elemen HTML dari luar shadow DOM ke dalam slot
+      container.innerHTML = "<p>Konten ini akan masuk ke dalam shadow DOM.</p>";
+    </script>
+  </body>
+</html>

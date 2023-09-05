@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contoh Shadow DOM</title>
+  </head>
+  <body>
+    <p>
+      Shadow DOM (Document Object Model) adalah teknologi dalam pengembangan web
+      yang memungkinkan Anda untuk membuat dan mengisolasi pohon DOM terpisah
+      dalam elemen HTML. Ini berguna ketika Anda ingin membuat komponen web yang
+      terisolasi dengan tampilan, gaya, dan perilaku mereka sendiri, yang tidak
+      akan terpengaruh oleh tampilan atau gaya dari komponen lain dalam dokumen
+      yang sama. Ini adalah cara untuk mencapai isolasi dan enkapsulasi dalam
+      pengembangan web. Mari kita buat contoh penggunaan Shadow DOM yang
+      sederhana agar lebih mudah dipahami:
+    </p>
+    <!-- my-custom-element, contoh dari shadow dom -->
+    <my-custom-element></my-custom-element>
+
+    <p>
+      Dalam contoh di atas, kita: Membuat elemen kustom 'my-custom-element'.
+      Ketika elemen ini dibuat, kita membuat Shadow DOM untuknya dengan
+      attachShadow. Di dalam Shadow DOM ini, kita membuat sebuah 'div' dan
+      menambahkan sebuah paragraf ke dalamnya. Akhirnya, kita menambahkan
+      'div'ini ke dalam Shadow DOM. Hasilnya, elemen 'my-custom-element' akan
+      memiliki pohon DOM terpisah yang berisi paragraf "Halo dari Shadow DOM!"
+      yang diisolasi dari DOM utama. Ini adalah contoh sederhana dari bagaimana
+      Shadow DOM digunakan untuk mencapai isolasi dan enkapsulasi.
+    </p>
+
+    <script>
+      // Membuat elemen custom
+      class MyCustomElement extends HTMLElement {
+        constructor() {
+          super();
+          // Buat Shadow DOM untuk elemen custom ini
+          const shadow = this.attachShadow({ mode: "open" });
+
+          // Buat elemen di dalam Shadow DOM
+          const container = document.createElement("div");
+          container.innerHTML = "<p>Halo dari Shadow DOM!</p>";
+
+          // Tambahkan elemen ke dalam Shadow DOM
+          shadow.appendChild(container);
+        }
+      }
+
+      // Daftarkan elemen custom
+      customElements.define("my-custom-element", MyCustomElement);
+    </script>
+  </body>
+</html>
