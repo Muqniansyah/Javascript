@@ -1,0 +1,26 @@
+Proyek kali ini kita akan menerapkan teknik modularisasi. 
+Tujuannya tidak lain untuk memudahkan kita dalam mengelola kode JavaScript. 
+Dengan memisahkan kode ke berkas yang berbeda, diharapkan tak ada lagi kode JavaScript yang panjang 
+dalam satu berkas. Percayalah, teknik modularisasi sangat memudahkan Anda ke depannya.
+
+Tak hanya data, teknik modularisasi juga akan diterapkan dalam pembuatan component. 
+Jadi, setiap satu component kita tulis dalam satu berkas JavaScript terpisah.
+
+
+Kita perlu memperhatikan nilai class pada React element karena nantinya class ini akan digunakan sebagai selector ketika menerapkan styling dengan CSS. 
+Dalam memberikan nilai class, kami mencoba mengikuti gaya konvensi BEM (Block Element Modifier). 
+
+
+Selain itu, jangan lupa untuk selalu mengekspor component menggunakan export default setiap akhir pembuatan component pada berkas JavaScript. Hal tersebut dilakukan dilakukan 
+supaya component dapat digunakan dan dikomposisikan oleh component lain di berkas JavaScript yang berbeda.
+
+Pengingat: Meskipun dengan JSX kita tidak perlu menggunakan keyword React ketika menggunakannya, tetapi tetap lakukan impor module React. 
+Hal ini untuk menghindari “kemungkinan” eror yang terjadi ketika Babel hendak mengubah kode JSX menjadi kode JavaScript biasa (terutama bila Anda menggunakan React versi < 16).
+
+di React data selalu hidup (berada) di parent component. 
+Jika child component membutuhkannya, data akan dikirim secara drilling (menurun) mulai dari komponen ContactList, ContactItem, ContactItemImage, dan ContactItemBody yang memanfaatkan properti.
+
+
+
+#CSS
+Ada dua pendekatan berbeda dalam melampirkan berkas styling di proyek React. Sama seperti gambar, kita bisa memperlakukannya seperti berkas statis dengan menyimpannya di dalam folder public atau kita bisa memperlakukannya sebagai module yang diimpor di dalam kode JavaScript.
