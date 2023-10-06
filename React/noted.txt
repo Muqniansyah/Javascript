@@ -1,5 +1,5 @@
 cara menggunakan react dengan vite
--ketikkan : npm create 
+-ketikkan : npm create vite
 npm create sebenarnya adalah sinonim (alias) dari perintah npm init yang berarti menginisialisasi proyek Node.js baru. Dengan menambahkan argumen vite di akhir perintahnya, 
 itu berarti kita memanfaatkan templat yang disediakan oleh Vite.
 
