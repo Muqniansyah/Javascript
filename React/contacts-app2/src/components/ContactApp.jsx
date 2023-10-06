@@ -27,7 +27,7 @@ class ContactApp extends React.Component {
   }
 
   // fungsi handler untuk menambahkan data kontaknya.
-  // ungsi onAddContactHandler membawa objek state dari ContactInput di parameter, di mana di dalam objek tersebut hanya ada dua data, yaitu name dan tag. Oleh karena itu, nilai dari properti id dan imageUrl kita berikan secara manual. Properti id diberi dengan nilai timestamp [+new Date()] agar selalu unik, sedangkan nilai dari properti imageUrl kita berikan dengan gambar default.jpg yang tersedia pada folder public/images.
+  // fungsi onAddContactHandler membawa objek state dari ContactInput di parameter, di mana di dalam objek tersebut hanya ada dua data, yaitu name dan tag. Oleh karena itu, nilai dari properti id dan imageUrl kita berikan secara manual. Properti id diberi dengan nilai timestamp [+new Date()] agar selalu unik, sedangkan nilai dari properti imageUrl kita berikan dengan gambar default.jpg yang tersedia pada folder public/images.
   onAddContactHandler({ name, tag }) {
     // Prevstate berisikan isi state dari contatc Jadi sintaks ...prevState.contacts itu untuk mengisi state sebelum nya, jika kita tidak menaruh argumen tersebut maka yang akan kesimpan di state contats hanya contact yang baru tambahkan saja
     this.setState((prevState) => {
