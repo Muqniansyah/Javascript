@@ -35,6 +35,8 @@ class ContactInput extends React.Component {
   //  fungsi addContact yang dipakai di dalam ContactInput merupakan fungsi onAddContactHandler yang dijadikan sebagai props.
   onSubmitEventHandler(event) {
     event.preventDefault();
+    // this.props adalah objek direact yang berguna mengakses property yang diberikan kepada komponen react.
+    // property atau props adalah cara utama untuk kirim data dari 1 komponen ke komponen lain direact, sehingga komponen dapat berinteraksi 1 sama lain dan berbagi informasi.
     this.props.addContact(this.state);
   }
 
