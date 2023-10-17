@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Particle js</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="particles-js">
+      <!-- animasi 1 (typing) -->
+      <div class="typing"></div>
+
+      <!-- animasi 2 (ketik) -->
+      <div class="container">
+        <div class="text">I'm a</div>
+        <ul class="dinamis-text">
+          <li><span>Programmer</span></li>
+          <li><span>Designer</span></li>
+          <li><span>Musisi</span></li>
+          <li><span>Developer</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      // script animasi typing
+      let i = 0;
+      let text = "selamat datang";
+
+      function typing() {
+        if (i < text.length) {
+          document.querySelector(".typing").innerHTML += text.charAt(i);
+          i++;
+          setTimeout(typing, 50);
+        }
+      }
+
+      typing();
+    </script>
+    <script src="particles.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

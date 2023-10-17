@@ -1,0 +1,85 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#particles-js {
+  background-color: grey;
+  min-height: 100vh;
+}
+
+/* animasi pertama */
+.typing {
+  width: 100%;
+  height: 50px;
+  background-color: #003;
+  color: #fff;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+/* animasi kedua */
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20%;
+}
+
+.container .text {
+  color: #fff;
+  font-size: 60px;
+  font-weight: 400;
+}
+
+.container .dinamis-text {
+  margin-left: 15px;
+  height: 90px;
+  line-height: 90px;
+  overflow: hidden;
+}
+
+.dinamis-text li {
+  list-style: none;
+  color: aqua;
+  font-size: 60px;
+  font-weight: 500;
+  position: relative;
+  top: 0;
+  animation: slide 12s steps(4) infinite;
+}
+
+@keyframes slide {
+  100% {
+    top: -360px;
+  }
+}
+
+.dinamis-text li span {
+  position: relative;
+  margin: 5px 0;
+  line-height: 90px;
+}
+
+.dinamis-text li span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 78px;
+  width: 100%;
+  background: #008181;
+  border-left: 2px solid #fff;
+  animation: muncul 3s steps(14) infinite;
+}
+
+@keyframes muncul {
+  40%,
+  60% {
+    left: calc(100% + 30px);
+  }
+  100% {
+    left: 0;
+  }
+}
