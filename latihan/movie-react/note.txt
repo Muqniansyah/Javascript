@@ -1,0 +1,12 @@
+menjalankan react dengan menggunakan :
+npx create-react-app .
+
+dan mengguanakan library axios :
+npm install axios
+
+memakai themoviedb sebagai api dan menggunaakan .env untuk menyimpan apikey, token dan pendukung dari themoviedb.
+
+dokumentasi :
+https://developer.themoviedb.org/docs/image-basics
+REACT_APP_BASEURL = https://api.themoviedb.org/3
+REACT_APP_BASEIMGURL = https://image.tmdb.org/t/p/w500
