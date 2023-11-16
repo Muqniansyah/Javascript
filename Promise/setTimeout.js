@@ -1,3 +1,5 @@
+// setTimeout(): Menjadwalkan eksekusi fungsi setelah waktu tertentu.
+
 // Fungsi setTimeout() merupakan cara yang paling mudah untuk membuat kode kita dijalankan secara asynchronous.
 /*Fungsi ini menerima dua buah parameter. Pertama adalah fungsi yang akan dijalankan secara asynchronous, 
 dan kedua adalah nilai number dalam milisecond sebagai nilai tunggu sebelum fungsi dijalankan.*/
