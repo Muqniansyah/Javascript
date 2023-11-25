@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mo Js</title>
+    <!-- CDN Mo Js -->
+    <script src="https://cdn.jsdelivr.net/npm/@mojs/core"></script>
+  </head>
+  <body>
+    <div id="bouncyCircle"></div>
+    <script>
+      const bouncyCircle = new mojs.Shape({
+        parent: "#bouncyCircle",
+        shape: "circle",
+        fill: { "#F64040": "#FC46AD" },
+        radius: { 20: 80 },
+        duration: 2000,
+        isYoyo: true,
+        isShowStart: true,
+        easing: "elastic.inout",
+        repeat: 1,
+      });
+
+      bouncyCircle.play();
+    </script>
+  </body>
+</html>

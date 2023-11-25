@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Typed Js</title>
+    <!-- CDN Typed Js -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+  </head>
+  <body>
+    <p id="text"></p>
+
+    <!-- setup typed js -->
+    <script>
+      let typed = new Typed("#text", {
+        strings: [
+          "<i>hallo</i> ^1000 Muqni.",
+          "salam kenal",
+          "selamat belajar",
+        ],
+        typeSpeed: 50,
+      });
+    </script>
+  </body>
+</html>

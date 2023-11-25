@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animate CSS</title>
+    <!-- CDN dari Animate CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <!-- my css style -->
+    <style>
+      .container {
+        background-color: aquamarine;
+      }
+      .container h1 {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container animate__animated animate__backInDown">
+      <div class="box">
+        <h1 class="animate__animated animate__bounce animate__delay-2s">
+          Hello World!
+        </h1>
+      </div>
+    </div>
+    <p
+      class="animate__animated animate__lightSpeedInRight animate__slow animate__repeat-2"
+    >
+      halo halo hai
+    </p>
+  </body>
+</html>

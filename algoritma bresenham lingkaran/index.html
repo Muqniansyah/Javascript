@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Algoritma lingkaran bresenham</title>
+    <style>
+      canvas {
+        border: 3px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Algoritma bresenham Lingkaran</h1>
+    <canvas id="canvasBresenham" width="300" height="300"></canvas>
+
+    <script>
+      // lingkaran menggunakan algoritma bresenham
+      function drawCircleBresenham(context, x0, y0, radius) {
+        let x = radius;
+        let y = 0;
+        let err = 0;
+
+        while (x >= y) {
+          context.fillRect(x0 + x, y0 + y, 3, 2);
+          context.fillRect(x0 + y, y0 + x, 3, 2);
+          context.fillRect(x0 - y, y0 + x, 3, 2);
+          context.fillRect(x0 - x, y0 + y, 3, 2);
+          context.fillRect(x0 - x, y0 - y, 3, 2);
+          context.fillRect(x0 - y, y0 - x, 3, 2);
+          context.fillRect(x0 + y, y0 - x, 3, 2);
+          context.fillRect(x0 + x, y0 - y, 3, 2);
+
+          y += 1;
+          err += 1 + 2 * y;
+          if (2 * (err - x) + 1 > 0) {
+            x -= 1;
+            err += 1 - 2 * x;
+          }
+        }
+      }
+
+      // mengambil elemen canvas
+      const canvasBresenham = document.getElementById("canvasBresenham");
+
+      // mengambil context 2D dari canvas
+      const contextBresenham = canvasBresenham.getContext("2d");
+
+      // mengatur posisi titik tengah lingakran dan radius
+      const x0 = 150;
+      const y0 = 150;
+      const radius = 100;
+
+      // menggambar lingkaran dengan algoritma bresenham
+      drawCircleBresenham(contextBresenham, x0, y0, radius);
+    </script>
+  </body>
+</html>
