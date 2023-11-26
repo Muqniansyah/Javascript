@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>slider text</title>
+    <style>
+      .slider {
+        font-size: 200px;
+        text-align: center;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sliders">
+      <p class="slider">hai</p>
+      <p class="slider">halo</p>
+      <p class="slider">hai halo</p>
+    </div>
+    <script>
+      // slider otomatis untuk kontendua
+      let start = 0;
+      otomatis();
+
+      function otomatis() {
+        const sliders = document.querySelectorAll(".slider");
+
+        for (let i = 0; i < sliders.length; i++) {
+          sliders[i].style.display = "none";
+        }
+
+        if (start >= sliders.length) {
+          start = 0;
+        }
+
+        sliders[start].style.display = "block";
+        console.log("gambar ke" + start);
+        start++;
+
+        setTimeout(otomatis, 2000);
+      }
+    </script>
+  </body>
+</html>

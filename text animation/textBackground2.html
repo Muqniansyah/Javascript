@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>text background 2</title>
+    <style>
+      body {
+        margin: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #332720;
+        color: white;
+      }
+
+      .background-text {
+        font-family: sans-serif;
+        font-size: 300px;
+        letter-spacing: 20px;
+        color: transparent;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+        background-image: url(./bg.jpg);
+        background-size: 120%;
+        animation: bg-animation 30s cubic-bezier(0.3, 0, 0.7, 1) infinite;
+      }
+
+      @keyframes bg-animation {
+        0% {
+          background-position: 0% 0%;
+        }
+        50% {
+          background-position: 100% 100%;
+        }
+        100% {
+          background-position: 0% 0%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="background-text">Hello.</div>
+  </body>
+</html>

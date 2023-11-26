@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blinking Text</title>
+    <style>
+      body {
+        background-color: black;
+      }
+
+      .notes-judul {
+        font-family: var(--martian);
+        margin-top: 40px;
+        font-weight: lighter;
+        text-align: center;
+      }
+
+      .notes-judul span {
+        font-size: 2rem;
+        text-transform: uppercase;
+        animation: blink 2s linear infinite;
+        color: #fff;
+      }
+
+      @keyframes blink {
+        0% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 0.5;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h3 class="notes-judul">
+      <span>Notes App</span>
+    </h3>
+  </body>
+</html>

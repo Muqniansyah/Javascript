@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>change colour</title>
+  </head>
+  <body>
+    <h3 class="text">Muqniansyah</h3>
+    <h3 class="text">Muqniansyah</h3>
+    <h3 class="text">Muqniansyah</h3>
+
+    <script>
+      let ubahTeks = document.getElementsByClassName("text");
+      // setTimeout jalankan kode setelah waktu tertentu. setInterval jalankan kode beberapa kali / berulang.
+      setInterval(function () {
+        ubahTeks[0].style.color = "#f48a29";
+        ubahTeks[1].style.color = "red";
+        ubahTeks[2].style.color = "#f48a29";
+        setTimeout(function () {
+          ubahTeks[0].style.color = "black";
+          ubahTeks[1].style.color = "black";
+          ubahTeks[2].style.color = "black";
+        }, 500);
+      }, 1000);
+    </script>
+  </body>
+</html>

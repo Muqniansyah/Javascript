@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sliders</title>
+    <style>
+      .fitur {
+        width: 100%;
+        max-height: 400px;
+        object-fit: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sliders">
+      <img src="./header.jpg" class="slider fitur" alt="pantai" />
+      <img src="./header2.jpg" class="slider fitur" alt="pura tanah lot" />
+      <img src="./header3.jpg" class="slider fitur" alt="ubud monkey forest" />
+    </div>
+    <script>
+      // slider otomatis untuk kontendua
+      let start = 0;
+      otomatis();
+
+      function otomatis() {
+        const sliders = document.querySelectorAll(".slider");
+
+        for (let i = 0; i < sliders.length; i++) {
+          sliders[i].style.display = "none";
+        }
+
+        if (start >= sliders.length) {
+          start = 0;
+        }
+
+        sliders[start].style.display = "block";
+        console.log("gambar ke" + start);
+        start++;
+
+        setTimeout(otomatis, 2000);
+      }
+    </script>
+  </body>
+</html>

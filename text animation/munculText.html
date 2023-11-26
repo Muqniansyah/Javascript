@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>muncul text</title>
+    <style>
+      .penjelasan {
+        margin-top: 40%;
+        font-family: "Edu VIC WA NT Beginner", cursive;
+        min-height: 150vh;
+        background-color: cornflowerblue;
+      }
+      /* munculkan elemen saat scroll tertentu */
+      /* saat pertama menghilang */
+      .elemen {
+        position: relative;
+        transform: translate(30px);
+        opacity: 0;
+        transition: all 0.7s ease;
+      }
+      /* saat kedua memunculkan kembali elemen dengan menambahkan class */
+      .muncul {
+        position: relative;
+        transform: translate(0px);
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <article class="penjelasan">
+      <section class="elemen">
+        <h3>Pura Tanah Lot</h3>
+        <p>
+          Tanah Lot salah satu pura penting bagi umat Hindu Bali dan lokasi pura
+          terletak di atas batu besar yang berada di lepas pantai. Pura Tanah
+          Lot merupakan ikon pariwisata pulau Bali. Selain itu salah satu obyek
+          wisata terkenal di pulau Bali yang wajib di kunjungi. Karena saking
+          terkenalnya tempat wisata di Bali ini, maka hampir setiap hari, objek
+          wisata ini selalu ramai dengan kunjungan wisatawan.
+        </p>
+      </section>
+
+      <section class="elemen">
+        <h3>Garuda Wisnu Kencana</h3>
+        <p>
+          Garuda Wisnu Kencana Cultural Park), atau kerap disebut dengan GWK,
+          adalah sebuah taman wisata budaya di bagian selatan pulau Bali. Taman
+          wisata ini terletak di Desa Ungasan, Kecamatan Kuta Selatan, Kabupaten
+          Badung, kira-kira 40 kilometer di sebelah selatan Denpasar, ibu kota
+          provinsi Bali. Di sini berdiri megah sebuah landmark atau maskot Bali,
+          yakni patung Garuda Wisnu Kencana yang menggambarkan sosok Dewa Wisnu
+          menunggangi tunggangannya, Garuda, setinggi 121 meter.
+        </p>
+      </section>
+
+      <section class="elemen">
+        <h3>Pura Ulun Danu</h3>
+        <p>
+          Objek wisata pura Ulun Danu Bedugul sangat cocok untuk anda kunjungi
+          jika anda menyukai keunikan arsitektur khas Bali, tata kebun dengan
+          banyak jenis bunga, dan lingkungan alam yang masih alami. Pada saat
+          anda tiba dipintu gerbang masuk tempat wisata Pura Ulun Danu Bratan
+          Bedugul, anda sudah dapat melihat candi bentar, keunikan arsitektur
+          pura, suasana asri, udara sejuk dan lingkungan bersih.
+        </p>
+      </section>
+
+      <section class="elemen">
+        <h3>Ubud Monkey Forest</h3>
+        <p>
+          Monkey Forest Ubud menjadi destinasi wisata yang sangat populer di
+          Pulau Bali. Berlokasi di Ubud, tempat wisata yang satu ini pun jadi
+          lokasi yang banyak dikunjungi oleh wisatawan. Baik wisatawan asing
+          ataupun domestik, kerap menyempatkan waktunya untuk datang ke tempat
+          ini.
+        </p>
+      </section>
+    </article>
+
+    <script>
+      // munculkan elemen saat scroll tertentu untuk kontenempat
+      window.addEventListener("scroll", muncul);
+
+      function muncul() {
+        let elements = document.querySelectorAll(".elemen");
+
+        for (let i = 0; i < elements.length; i++) {
+          let tinggiLayar = window.innerHeight;
+
+          let jarakAtasElemen = elements[i].getBoundingClientRect().top;
+
+          let ukuranScroll = 350;
+
+          if (jarakAtasElemen < tinggiLayar - ukuranScroll) {
+            elements[i].classList.add("muncul");
+          } else {
+            elements[i].classList.remove("muncul");
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

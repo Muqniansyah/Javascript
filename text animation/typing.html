@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>typing</title>
+    <style>
+      .typing {
+        width: 100%;
+        height: 50px;
+        background-color: #003;
+        color: #fff;
+        text-align: center;
+        font-size: 30px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="typing"></div>
+
+    <script>
+      // script animasi typing
+      let i = 0;
+      let text = "selamat datang";
+
+      function typing() {
+        if (i < text.length) {
+          document.querySelector(".typing").innerHTML += text.charAt(i);
+          i++;
+          setTimeout(typing, 50);
+        }
+      }
+
+      typing();
+    </script>
+  </body>
+</html>

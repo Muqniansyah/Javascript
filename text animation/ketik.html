@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ketik</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: black;
+      }
+
+      .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20%;
+      }
+
+      .container .text {
+        color: #fff;
+        font-size: 60px;
+        font-weight: 400;
+      }
+
+      .container .dinamis-text {
+        margin-left: 15px;
+        height: 90px;
+        line-height: 90px;
+        overflow: hidden;
+      }
+
+      .dinamis-text li {
+        list-style: none;
+        color: aqua;
+        font-size: 60px;
+        font-weight: 500;
+        position: relative;
+        top: 0;
+        animation: slide 12s steps(4) infinite;
+      }
+
+      @keyframes slide {
+        100% {
+          top: -360px;
+        }
+      }
+
+      .dinamis-text li span {
+        position: relative;
+        margin: 5px 0;
+        line-height: 90px;
+      }
+
+      .dinamis-text li span::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        height: 78px;
+        width: 100%;
+        background: #008181;
+        border-left: 2px solid #fff;
+        animation: muncul 3s steps(14) infinite;
+      }
+
+      @keyframes muncul {
+        40%,
+        60% {
+          left: calc(100% + 30px);
+        }
+        100% {
+          left: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="text">I'm a</div>
+      <ul class="dinamis-text">
+        <li><span>Programmer</span></li>
+        <li><span>Designer</span></li>
+        <li><span>Musisi</span></li>
+        <li><span>Developer</span></li>
+      </ul>
+    </div>
+  </body>
+</html>
