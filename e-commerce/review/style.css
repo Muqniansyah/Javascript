@@ -15,6 +15,7 @@ body {
 }
 
 .container {
+  position: relative;
   width: 400px;
   background: #111;
   padding: 20px 30px;
@@ -24,6 +25,30 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+.container .post {
+  display: none;
+}
+
+.container .text {
+  font-size: 25px;
+  color: #666;
+  font-weight: 500;
+}
+
+.container .edit {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  font-size: 16px;
+  color: #666;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.container .edit:hover {
+  text-decoration: underline;
 }
 
 .container .star-widget input {
@@ -50,6 +75,34 @@ input:checked ~ label {
 input#rate-5:checked ~ label {
   color: #fe7;
   text-shadow: 0 0 20px #952;
+}
+
+#rate-1:checked ~ form header:before {
+  content: "I Just Hate It😠";
+}
+
+#rate-2:checked ~ form header:before {
+  content: "I Dont Like It😒";
+}
+
+#rate-3:checked ~ form header:before {
+  content: "It Is Awesome😃";
+}
+
+#rate-4:checked ~ form header:before {
+  content: "I Just Like It😎";
+}
+
+#rate-5:checked ~ form header:before {
+  content: "I Just Love It😍";
+}
+
+.container form {
+  display: none;
+}
+
+input:checked ~ form {
+  display: block;
 }
 
 form header {
@@ -84,4 +137,22 @@ form .btn {
   height: 45px;
   width: 100%;
   margin: 15px 0;
+}
+
+form .btn button {
+  height: 100%;
+  width: 100%;
+  border: 1px solid #444;
+  outline: none;
+  background: #222;
+  color: #999;
+  font-size: 17px;
+  font-weight: 500;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+form .btn button:hover {
+  background: #1b1b1b;
 }
