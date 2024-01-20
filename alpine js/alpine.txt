@@ -1,0 +1,59 @@
+alpine js adalah framework. framework yang digunakan untuk menyederhanakan.
+website : alpinejs.dev
+pembuat alpine : github.com/calebporzio
+gunakan extension alpinejs intelissense untuk mempermudah memakai alpine karna terdapat fitur auto complete.
+gunakan extension alpine.js syntax highlight.
+jalankan alpine dengan live server.
+
+alpinejs dan livewire terinspirasi dari vue. livewire versi sederhana vue dan alpinejs adalah tools yang lebih sederhana lagi dari vue dan livewire.
+
+
+#latar belakang alpine js:
+-tools yang lebih simple dari livewire
+-hanya untuk interaktivitas sederhanana
+-seperti jquery, tapi bukan
+-declarative dan reactive
+-tailwind, tapi untuk javascript.
+
+#deklarative code yaitu cara penulisannya seperti menunjukkan tentang bagaimana caranya.
+#imperative code yaitu cara penulisannya seperti menunjukkan tentang hasilnya akan seperti apa.
+
+#kapan menggunakan alpinejs:
+-show and hide DOM Element
+-Bind user input.
+yaitu ketika user menginputkan sesuatu dielement input maka apa yang diketikkan akan muncul lagi ditempat lain secara realtime.
+jadi arti bind atau dibind itu dihubungkan atau diikat.
+-menjalankan event listener
+co: ketika tombol diklik, mouse hover, saat fokus berubah, dll.
+-manipulasi class.
+co : saat klik sesuatu maka tambahkan class atau ketika lakukan input maka akan memberikan class pada element lain.
+
+
+#struktur alpine js
+-2 cara install
+1. dengan cdn
+2. install dengan npm, yaitu :
+	a.)npm install alpinejs
+	b.)lakukan import 
+	co: import Alpine from 'alpinejs'
+	c.) window.Alpine = Alpine
+	d.) Alpine.start()
+-18 directives.
+directives adalah sebuah fungsi yang bisa diterapkan sebagai atribut dari htmlnya. 
+co : x-data, x-init, x-show, x-bind, x-on, x-text, x-html, x-model, x-modelable, x-for, x-transition, x-effect, x-ref, x-cloak, x-teleport, x-if, x-id.
+-9 magic property untuk mempermudah memakai alpine.
+co : $el, $refs, $store, $watch, $dispatch, $nextTick, $root, $data, $id.
+-3 global method.
+co : Alpine.data(), Alpine.store(), Alpine.bind().
+
+
+#state di alpine js
+state adalah inti dari semua yang kita lakukan di alpine js.
+-state itu data javascript yang dipantau perubahannya oleh Alpine js.
+-state bisa dibuat secara lokal(diakses dielemen tertentu dalam htmlnya) maupun global(semua halaman web bisa mengakses data tersebut).
+-cara bikinnya kita harus menentukan menggunakan directives x-data untuk lokal atau global method yaitu Alpine.store() untuk global.
+a.)ketika menggunakan local state maka elemen itu sendiri dan didalamnya yang bisa mengakses,dan diluar dari elemen itu maka tidak bisa mengaksesnya.
+
+
+#untuk melengkapi event pada alpine js, alpine js memiliki event modifiers yang disini kita bisa memberikan perilaku tambahan pada event kita.
+co : .prevent, .stop, .outside, .window, .once, .debounce, dan lainnya.

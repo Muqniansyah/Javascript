@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>latihan pertama tentang state</title>
+    <script src="//unpkg.com/alpinejs" defer></script>
+  </head>
+  <body>
+    <!-- local state -->
+    <h1>local state</h1>
+    <div x-data="{nama: 'Muqniansyah'}">
+      <span x-text="nama"></span>
+    </div>
+
+    <!-- nested local state -->
+    <h1>nested local state</h1>
+    <div x-data="{nama: 'muni'}">
+      <div x-data="{umur: 19}">
+        <p>Nama : <span x-text="nama"></span></p>
+        <p>Umur : <span x-text="umur"></span></p>
+      </div>
+    </div>
+
+    <!-- single element data -->
+    <h1>single element data</h1>
+    <button></button>
+
+    <!-- global state -->
+    <h1>global state</h1>
+
+    <!-- data less alpine -->
+    <h1>data less alpine</h1>
+  </body>
+</html>
