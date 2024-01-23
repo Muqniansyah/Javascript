@@ -12,31 +12,177 @@
   <body>
     <!-- x-text -->
     <h1>x-text untuk text content</h1>
+    <p>x-text digunakan untuk merubah teks dari sebuah elemen html</p>
 
+    <!-- contoh 1 dari x-text -->
+    <div
+      class="container mx-auto w-1/2 text-center mt-10 bg-lime-200 p-10 rounded-xl shadow"
+      x-data="{nama: 'muqniansyah'}"
+    >
+      <h1
+        class="text-5xl font-bold bg-gradient-to-r from-blue-500 to-pink-400 bg-clip-text text-transparent drop-shadow-sm"
+      >
+        Halo, <span x-text="nama"></span>
+      </h1>
+    </div>
+
+    <!-- contoh 2 dari x-text menuliskan expression javascript-->
+    <div
+      class="container mx-auto w-1/2 text-center mt-10 bg-lime-200 p-10 rounded-xl shadow"
+      x-data="{nama: 'muqniansyah', angka: 2}"
+    >
+      <p
+        class="text-2xl font-bold bg-gradient-to-r from-blue-500 to-pink-400 bg-clip-text text-transparent drop-shadow-sm"
+      >
+        Halo, <span x-text="nama"></span>
+      </p>
+      <p
+        class="text-2xl font-bold bg-gradient-to-r from-blue-500 to-pink-400 bg-clip-text text-transparent drop-shadow-sm"
+      >
+        <span x-text="angka"></span> adalah bilangan :
+        <span x-text="angka % 2 === 0 ? 'Genap' : 'ganjil'"></span>
+      </p>
+    </div>
     <br />
     <hr />
 
     <!-- x-html -->
     <h1>x-html untuk inner html</h1>
+    <p>
+      jika ingin memasukkan tag html yang dieksekusi sebagai tag html bukan
+      sebagai string jadi pakai x-html.
+    </p>
+    <p>
+      gunakan x-html hanya untuk elemen yang dipercaya jika konten di-generate
+      oleh user. merender elemen secara dinamis oleh pihak ketiga dapat
+      menyebabkan serangan XSS.
+    </p>
 
+    <!-- contoh dari x-html menampilkan elemen html-->
+    <div
+      class="container mx-auto w-1/2 text-center mt-10 bg-lime-200 p-10 rounded-xl shadow"
+      x-data="{nama: 'muqniansyah', link: '<a href=\'https:youtube.com\'>Youtube</a>'}"
+    >
+      <h1
+        class="text-5xl font-bold bg-gradient-to-r from-blue-500 to-pink-400 bg-clip-text text-transparent drop-shadow-sm"
+      >
+        Halo, <span x-html="link"></span>
+      </h1>
+    </div>
     <br />
     <hr />
 
     <!-- x-show / x-if -->
     <h1>x-show / x-if untuk toogling element</h1>
+    <p>
+      kita bisa menghilangkan dan memunculkan elemen menggunakan directive
+      x-show dan x-if
+    </p>
 
+    <!-- contoh dari x-show-->
+    <div
+      class="container mx-auto w-1/2 text-center mt-10 bg-lime-200 p-10 rounded-xl shadow"
+      x-data="{open: false}"
+    >
+      <button
+        @click="open = !open"
+        x-text="open? 'Tutup':'Buka'"
+        class="py-2 px-5 bg-slate-600 text-white rounded-md"
+      >
+        Buka
+      </button>
+      <div
+        x-show="open"
+        class="w-3/4 mx-auto mt-4 p-5 bg-blue-400 rounded text-white"
+      >
+        Lorem Ipsum dolor sit amet....
+      </div>
+    </div>
+
+    <!-- contoh dari x-if-->
+    <!-- jika menggunakan x-if kita membutuhkan tag template -->
+    <div
+      class="container mx-auto w-1/2 text-center mt-10 bg-lime-200 p-10 rounded-xl shadow"
+      x-data="{open: false}"
+    >
+      <button
+        @click="open = !open"
+        x-text="open? 'Tutup':'Buka'"
+        class="py-2 px-5 bg-slate-600 text-white rounded-md"
+      >
+        Buka
+      </button>
+      <template x-if="open">
+        <div class="w-3/4 mx-auto mt-4 p-5 bg-blue-400 rounded text-white">
+          Lorem Ipsum dolor sit amet....
+        </div>
+      </template>
+    </div>
     <br />
     <hr />
 
     <!-- x-transition -->
     <h1>x-transition untuk transisi</h1>
+    <p>pada x-transition kita bisa manipulasi property transitionnya.</p>
+    <p>
+      seperti : duration, delay, opacity, dll. cek property lainnya pada webiste
+      alpine js
+    </p>
 
+    <!-- contoh dari x-transition-->
+    <div
+      class="container mx-auto w-1/2 text-center mt-10 bg-lime-200 p-10 rounded-xl shadow"
+      x-data="{open: false}"
+    >
+      <button
+        @click="open = !open"
+        x-text="open? 'Tutup':'Buka'"
+        class="py-2 px-5 bg-slate-600 text-white rounded-md"
+      >
+        Buka
+      </button>
+      <div
+        x-show="open"
+        x-transition.origin.bottom.duration.1000ms
+        class="w-3/4 mx-auto mt-4 p-5 bg-blue-400 rounded text-white"
+      >
+        Lorem Ipsum dolor sit amet....
+      </div>
+    </div>
     <br />
     <hr />
 
     <!-- x-bind -->
     <h1>x-bind untuk binding attributes</h1>
+    <p>
+      x-bind berfungsi untuk bisa membinding atribut dari elemen kita sesuai
+      sebuah keadaan.
+    </p>
+    <p>
+      atribut yang bisa dirubah meliputi : class, property css, keadaan disable.
+    </p>
 
+    <!-- contoh dari x-bind-->
+    <div
+      class="container mx-auto w-1/2 text-center mt-10 bg-lime-200 p-10 rounded-xl shadow"
+      x-data="{open: false}"
+    >
+      <button
+        @click="open = !open"
+        x-text="open? 'Tutup':'Buka'"
+        x-bind:class="open ? 'bg-cyan-600':'bg-slate-600'"
+        class="py-2 px-5 text-white rounded-md"
+      >
+        Buka
+      </button>
+      <div
+        x-show="open"
+        x-transition.origin.bottom.duration.1000ms
+        class="w-3/4 mx-auto mt-4 p-5 bg-blue-400 rounded text-white"
+      >
+        Lorem Ipsum dolor sit amet....
+      </div>
+    </div>
     <br />
     <hr />
   </body>

@@ -52,8 +52,16 @@ state adalah inti dari semua yang kita lakukan di alpine js.
 -state itu data javascript yang dipantau perubahannya oleh Alpine js.
 -state bisa dibuat secara lokal(diakses dielemen tertentu dalam htmlnya) maupun global(semua halaman web bisa mengakses data tersebut).
 -cara bikinnya kita harus menentukan menggunakan directives x-data untuk lokal atau global method yaitu Alpine.store() untuk global.
-a.)ketika menggunakan local state maka elemen itu sendiri dan didalamnya yang bisa mengakses,dan diluar dari elemen itu maka tidak bisa mengaksesnya.
+a.)ketika menggunakan local state maka elemen itu sendiri (single element data) dan didalamnya yang bisa mengakses,dan diluar dari elemen itu maka tidak bisa mengaksesnya.
+b.)ketika menggunakan global state maka kita harus inisialisasi alpine pada javascript.
 
 
 #untuk melengkapi event pada alpine js, alpine js memiliki event modifiers yang disini kita bisa memberikan perilaku tambahan pada event kita.
 co : .prevent, .stop, .outside, .window, .once, .debounce, dan lainnya.
+
+#templating
+alpine js menawarkan banyak directive untuk memanipulasi DOM. 
+template directives diantaranya ada :
+x-text, x-show, x-transition, x-bind, x-if, x-for, x-html.
+
+a.)didalam x-text kita juga bisa menuliskan expression javascript.

@@ -3,14 +3,287 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>latihan keempat tentang models</title>
+    <title>latihan keempat tentang custom event dan event modifiers</title>
     <!-- tailwind css -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- alpine js -->
     <script src="//unpkg.com/alpinejs" defer></script>
   </head>
   <body>
-    <!-- x-model -->
-    <h1>x-model untuk two way data bindind</h1>
+    <!-- custom event -->
+    <h1>custom event</h1>
+    <p>$dispatch untuk custom event</p>
+    <p>
+      tujuannya untuk bisa bikin event sendiri selain yang ada dijavascript.
+      dengan cara menggunakan magic property yaitu $dispatch
+    </p>
+
+    <!-- contoh custom event yang pertama-->
+    <!-- @log adalah nama custom event yang dibuat -->
+    <div
+      class="container mx-auto w-3/4 text-center mt-10 bg-red-200 p-10 rounded-xl shadow"
+      x-data="{pesan: 'Hello World!'}"
+      @log="alert('data telah terkirim')"
+    >
+      <label for="nama" class="text-sm font-medium text-gray-900 block mb-2"
+        >Masukkan Nama</label
+      >
+      <input
+        type="text"
+        @keyup.shift.enter="alert('data terkirim!')"
+        class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+      />
+      <button
+        @click="$dispatch('log')"
+        class="py-2 px-5 text-white rounded-md bg-slate-500 mt-3"
+      >
+        Klik Saya!
+      </button>
+    </div>
+
+    <!-- contoh custom event yang kedua yaitu memanggil custom event beserta mengirimkan data.-->
+    <!-- @log adalah nama custom event yang dibuat -->
+    <!-- $event.detail.nama untuk menangkap atau memanggilnya kita perlu menggunakan $event. dan property detail untuk mendapatkan data {nama: 'Muqniansyah'} -->
+    <div
+      class="container mx-auto w-3/4 text-center mt-10 bg-red-200 p-10 rounded-xl shadow"
+      x-data="{pesan: 'Hello World!'}"
+      @log="alert('data telah terkirim. oleh ' + $event.detail.nama)"
+    >
+      <label for="nama" class="text-sm font-medium text-gray-900 block mb-2"
+        >Masukkan Nama</label
+      >
+      <input
+        type="text"
+        @keyup.shift.enter="alert('data terkirim!')"
+        class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+      />
+      <button
+        @click="$dispatch('log', {nama: 'Muqniansyah'})"
+        class="py-2 px-5 text-white rounded-md bg-slate-500 mt-3"
+      >
+        Klik Saya!
+      </button>
+    </div>
+
+    <br />
+    <hr />
+
+    <!-- event modifiers -->
+    <h1>event modifiers</h1>
+
+    <h2>.prevent</h2>
+    <p>
+      .prevent digunakan untuk menghentikkan perilaku default dari sebuah
+      element.
+    </p>
+
+    <!-- contoh dari .prevent -->
+    <!-- contoh disini mematikan perilaku default dari form yaitu ketika klik tombol submit datanya dikirim kedalam action. -->
+    <div
+      class="container mx-auto w-3/4 text-center mt-10 bg-yellow-200 p-10 rounded-xl shadow"
+      x-data="{pesan: 'Hello World!'}"
+      @log="alert('data telah terkirim. oleh ' + $event.detail.nama)"
+    >
+      <form
+        action="/post"
+        @submit.prevent="alert('data dikirim oleh AlpineJS!')"
+      >
+        <label for="nama" class="text-sm font-medium text-gray-900 block mb-2"
+          >Masukkan Nama</label
+        >
+        <input
+          type="text"
+          @keyup.shift.enter="alert('data terkirim!')"
+          class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        />
+        <button
+          type="submit"
+          class="py-2 px-5 text-white rounded-md bg-slate-500 mt-3"
+        >
+          Kirim!
+        </button>
+      </form>
+    </div>
+
+    <br />
+    <hr />
+
+    <h2>.stop</h2>
+    <p>
+      .stop digunakan untuk menghentikan propagasi atau event yang bubbling
+      keatas.
+    </p>
+    <p>
+      jadi event itu ketika kita mempunyai beberapa event dalam element yang
+      bersarang, jika kita lakukan event dielement childnya maka ia akan
+      mengecek element parentnya punya event juga atau tidak. jika punya maka
+      event tersebut akan dijalankan juga.
+    </p>
+
+    <!-- contoh dari .stop -->
+    <div
+      class="container mx-auto w-3/4 text-center mt-10 bg-yellow-200 p-10 rounded-xl shadow"
+      x-data="{pesan: 'Hello World!'}"
+      @click="alert('div diklik!')"
+    >
+      <label for="nama" class="text-sm font-medium text-gray-900 block mb-2"
+        >Masukkan Nama</label
+      >
+      <input
+        type="text"
+        @keyup.shift.enter="alert('data terkirim!')"
+        class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+      />
+      <button
+        @click.stop="alert('button diklik!')"
+        class="py-2 px-5 text-white rounded-md bg-slate-500 mt-3"
+      >
+        Kirim!
+      </button>
+    </div>
+
+    <br />
+    <hr />
+
+    <h2>.outside</h2>
+    <p>.outside digunakan untuk</p>
+
+    <!-- contoh dari .outside -->
+    <!-- contoh disini ketika kita klik dimanapun maka tombolnya akan menutup saat terbuka. -->
+    <div
+      class="container mx-auto w-1/2 text-center mt-10 bg-lime-200 p-10 rounded-xl shadow"
+      x-data="{open: false}"
+    >
+      <button
+        @click="open = !open"
+        x-text="open? 'Tutup':'Buka'"
+        x-bind:class="open ? 'bg-cyan-600':'bg-slate-600'"
+        class="py-2 px-5 text-white rounded-md"
+        @click.outside="open = false"
+      >
+        Buka
+      </button>
+      <div
+        x-show="open"
+        x-transition.origin.bottom.duration.1000ms
+        class="w-3/4 mx-auto mt-4 p-5 bg-blue-400 rounded text-white"
+      >
+        Lorem Ipsum dolor sit amet....
+      </div>
+    </div>
+    <br />
+    <hr />
+
+    <h2>.window</h2>
+    <p>.window digunakan untuk</p>
+    <p>
+      ketika eventnya ingin kita jalankan dilingkup window, bukan hanya disebuah
+      element saja.
+    </p>
+
+    <!-- contoh dari .window -->
+    <div
+      class="container mx-auto w-1/2 text-center mt-10 bg-lime-200 p-10 rounded-xl shadow"
+      x-data="{open: false}"
+    >
+      <button
+        @click="open = !open"
+        x-text="open? 'Tutup':'Buka'"
+        x-bind:class="open ? 'bg-cyan-600':'bg-slate-600'"
+        class="py-2 px-5 text-white rounded-md"
+        @keyup.esc.window="open =false"
+      >
+        Buka
+      </button>
+      <div
+        x-show="open"
+        x-transition.origin.bottom.duration.1000ms
+        class="w-3/4 mx-auto mt-4 p-5 bg-blue-400 rounded text-white"
+      >
+        Lorem Ipsum dolor sit amet....
+      </div>
+    </div>
+    <br />
+    <hr />
+
+    <h2>.once</h2>
+    <p>
+      .once digunakan untuk ketika kita ingin menjalankan sebuah event hanya
+      sekali dari event yang kita lakukan berulang.
+    </p>
+
+    <!-- contoh dari .once -->
+    <div
+      class="container mx-auto w-3/4 text-center mt-10 bg-yellow-200 p-10 rounded-xl shadow"
+      x-data="{pesan: 'Hello World!'}"
+    >
+      <label for="nama" class="text-sm font-medium text-gray-900 block mb-2"
+        >Masukkan Nama</label
+      >
+      <input
+        type="text"
+        @keyup.once="console.log($event.target.value)"
+        class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+      />
+      <button
+        @click.stop="alert('button diklik!')"
+        class="py-2 px-5 text-white rounded-md bg-slate-500 mt-3"
+      >
+        Kirim!
+      </button>
+    </div>
+    <br />
+    <hr />
+
+    <h2>.debounce</h2>
+    <p>
+      .debounce digunakan untuk ia akan menunggu dulu dalam beberapa waktu
+      millisecond, baru ia akan menjalankan fungsi tersebut. biasanya ia akan
+      menunggu 0.25 detik atau 250ms.
+    </p>
+
+    <!-- contoh dari .debounce -->
+    <div
+      class="container mx-auto w-3/4 text-center mt-10 bg-yellow-200 p-10 rounded-xl shadow"
+      x-data="{pesan: 'Hello World!'}"
+    >
+      <label for="nama" class="text-sm font-medium text-gray-900 block mb-2"
+        >Masukkan Nama</label
+      >
+      <input
+        type="text"
+        @keyup.debounce="console.log($event.target.value)"
+        class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+      />
+      <button
+        @click.stop="alert('button diklik!')"
+        class="py-2 px-5 text-white rounded-md bg-slate-500 mt-3"
+      >
+        Kirim!
+      </button>
+    </div>
+
+    <!-- contoh kedua dari .debounce untuk menunggu lebih lama lagi, misalnya setengah detik atau 500ms -->
+    <div
+      class="container mx-auto w-3/4 text-center mt-10 bg-yellow-200 p-10 rounded-xl shadow"
+      x-data="{pesan: 'Hello World!'}"
+    >
+      <label for="nama" class="text-sm font-medium text-gray-900 block mb-2"
+        >Masukkan Nama</label
+      >
+      <input
+        type="text"
+        @keyup.debounce.500ms="console.log($event.target.value)"
+        class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+      />
+      <button
+        @click.stop="alert('button diklik!')"
+        class="py-2 px-5 text-white rounded-md bg-slate-500 mt-3"
+      >
+        Kirim!
+      </button>
+    </div>
+    <br />
+    <hr />
   </body>
 </html>

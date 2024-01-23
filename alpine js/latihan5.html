@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>latihan kelima tentang models</title>
+    <!-- tailwind css -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- alpine js -->
+    <script src="//unpkg.com/alpinejs" defer></script>
+  </head>
+  <body>
+    <!-- x-model -->
+    <h1>x-model untuk two way data binding</h1>
+    <p>
+      model ini adalah sebuah cara agar kita dapat mengubah data yang sudah kita
+      bikin dicomponent kita menggunakan element element input dari user. bisa
+      menggunakan text-field, combobox, checkbox, dan lain lain.
+    </p>
+    <p>
+      untuk directives x-model data yang bisa merubah yaitu user dengan
+      menggunakan element element input. macam macam element inputnya yaitu :
+      input text, textarea, checkbox, radio button, select.
+    </p>
+
+    <!-- contoh x-model dari input text -->
+    <div
+      class="container mx-auto w-3/4 text-center mt-10 bg-yellow-200 p-10 rounded-xl shadow"
+      x-data="{pesan:''}"
+    >
+      <label for="nama" class="text-sm font-medium text-gray-900 block mb-2"
+        >Masukkan Pesan</label
+      >
+      <!-- penggunaannya yaitu x-model lalu berisi data mana yang ingin kita ubah / hubungkan -->
+      <input
+        x-model="pesan"
+        type="text"
+        class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+      />
+
+      <!-- apapun yang diketik diinput akan ditampilkan disini -->
+      <span x-text="pesan"></span>
+    </div>
+    <br />
+    <hr />
+
+    <!-- contoh x-model dari textarea -->
+    <div
+      class="container mx-auto w-3/4 text-center mt-10 bg-yellow-200 p-10 rounded-xl shadow"
+      x-data="{pesan:''}"
+    >
+      <label for="nama" class="text-sm font-medium text-gray-900 block mb-2"
+        >Masukkan Pesan</label
+      >
+      <!-- penggunaannya yaitu x-model lalu berisi data mana yang ingin kita ubah / hubungkan -->
+      <textarea
+        x-model="pesan"
+        type="text"
+        class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+      ></textarea>
+
+      <!-- x-bind mempunyai shorcut yaitu titik dua (:), contohnya yaitu :class -->
+      <span
+        x-text="pesan.length"
+        class="text-lg flex text-green-500 font-bold"
+        :class="pesan.length > 20 ? 'text-red-500' : '' "
+      ></span>
+    </div>
+    <br />
+    <hr />
+
+    <!-- contoh x-model dari checkbox -->
+    <div
+      class="container mx-auto w-3/4 text-center mt-10 bg-yellow-200 p-10 rounded-xl shadow"
+      x-data="{open: true}"
+    >
+      <input type="checkbox" id="checkbox" x-model="open" />
+      <label for="checkbox" x-text="!open ? 'kosong' : 'terisi'"></label>
+    </div>
+    <br />
+    <hr />
+
+    <!-- contoh x-model dari checkbox yang banyak -->
+    <!-- dicontoh ini ketika kita memilih data, maka datanya langsung terkirim sebagai array.  -->
+    <!-- penggunaan x-modelnya kita masukkan x-modelnya ditiap tiap checkbox -->
+    <div class="mt-5" x-data="{hobby: []}">
+      <div class="flex items-center mb-2">
+        <input
+          x-model="hobby"
+          type="checkbox"
+          id="menulis"
+          value="menulis"
+          class="w-4 h-4 text-blue-600 border-gray-300 rounded"
+        />
+        <label for="menulis" class="ml-2 text-sm">Menulis</label>
+      </div>
+
+      <div class="flex items-center mb-2">
+        <input
+          x-model="hobby"
+          type="checkbox"
+          id="menyanyi"
+          value="menyanyi"
+          class="w-4 h-4 text-blue-600 border-gray-300 rounded"
+        />
+        <label for="menyanyi" class="ml-2 text-sm">Menyanyi</label>
+      </div>
+
+      <div class="flex items-center mb-2">
+        <input
+          x-model="hobby"
+          type="checkbox"
+          id="ngoding"
+          value="ngoding"
+          class="w-4 h-4 text-blue-600 border-gray-300 rounded"
+        />
+        <label for="ngoding" class="ml-2 text-sm">Ngoding</label>
+      </div>
+
+      <!-- disini kita menampilkan dari hobby apa yang dipilih -->
+      <p class="text-left text-sm">
+        Hobby:
+        <span
+          x-text="hobby.map(h => h.charAt(0).toUpperCase() + h.slice(1))"
+        ></span>
+      </p>
+      <!-- untuk membuat huruf depan besar lalu huruf setelahnya kecil. -->
+      <!-- .map(h => h.charAt(0).toUpperCase() + h.slice(1), artinya ambil dulu huruf pertama lalu kita uppercase lalu kita butuh huruf berikutnya dan kita sambung dengan cara ambil huruf sisanya mulai dari index kesatu. -->
+    </div>
+  </body>
+</html>

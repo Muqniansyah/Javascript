@@ -23,13 +23,39 @@
     </div>
 
     <!-- single element data -->
+    <!-- single element data yaitu kita bisa menyimpan statenya ke sebuah elemen, jadi hanya yang menggunakan elemen itu saja.  -->
     <h1>single element data</h1>
-    <button></button>
+    <button x-data="{label: 'klik disini'}" x-text="label"></button>
 
     <!-- global state -->
     <h1>global state</h1>
+    <!-- memakai global state dengan x-data dan tidak perlu diberikan nilai karna kita akan menggunakan data yang ada diglobal state.-->
+    <div x-data="x-data">
+      <ul>
+        <!-- melakukan looping terhadap elemen li sebanyak data yang ada di global state. -->
+        <template x-for="nm in $store.mahasiswa.nama">
+          <li x-text="nm"></li>
+        </template>
+      </ul>
+    </div>
 
     <!-- data less alpine -->
+    <!-- data less alpine yaitu alpine tidak punya data global state maupun lokal state.  -->
+    <!-- jadi fungsinya untuk memakai fitur dari alpine. -->
     <h1>data less alpine</h1>
+    <!-- ketika kita memakai fitur alpine seperti @click, maka kita harus pakai x-data walaupun tidak ada data yang dikirim.-->
+    <button x-data @click="alert('Tombol telah diklik!')">Klik Saya</button>
   </body>
+
+  <!-- membuat global state -->
+  <script>
+    // inisialisasi alpine
+    document.addEventListener("alpine:init", () => {
+      // pakai global method yaitu Alpine.store() untuk menyimpan data.
+      Alpine.store("mahasiswa", {
+        tahun: 2023,
+        nama: ["muni", "rahman", "rangga"],
+      });
+    });
+  </script>
 </html>
