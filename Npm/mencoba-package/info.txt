@@ -1,0 +1,10 @@
+contoh package yang ada didalam npm :
+
+1. validator 
+   sebuah package yang mempermudah melakukan validasi terhadap string.
+2. chalk
+   package untuk mewarnai terminal.
+3. nodemon
+   package untuk watch preview. yaitu node js akan terus berjalan memeriksa perubahan codingan kita 
+   tanpa menjalankannya secara manual seperti contoh secara manual : 
+   node <nama_file>
