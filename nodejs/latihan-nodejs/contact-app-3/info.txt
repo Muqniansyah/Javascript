@@ -1,0 +1,46 @@
+1. existsSync()
+untuk mengecek apakah sebuah file atau direktori itu ada difile system kita atau tidak.
+
+2. mkdirSync()
+untuk membuat direktori baru.
+
+3. writeFileSync()
+untuk membuat file baru.
+
+4. yargs
+modules yang ada dinpm yaitu modules untuk mengelola argumen pada command line.
+website resmi : yargs.js.org
+
+- mengambil argumen dari command line, contoh :
+console.log(process.argv[2]);
+
+- mengambil argumen dengan yargs, contoh :
+console.log(yargs.argv);
+
+- penggunaan sederhana yargs :
+kita bikin sebuah command lalu didalamnya kita berikan :
+1. command, yaitu perintah. seperti : add, remove, list.
+2. desc, yaitu deskripsi dari perintahnya.
+3. [builder], berikan objek sebagai pembentuk perintahnya. dimana kita bisa menuliskan tiap tiap item data yang kita butuhkan.
+4. [handler], fungsi yang akan memberi tahu apa yang kita lakukan ketika command atau perintah dieksekusi.
+
+const yargs = require("yargs");
+yargs.command(
+  "add",
+  "Menambahkan contact baru",
+  () => {},
+  (argv) => {
+    console.log(argv.nama);
+  }
+);
+
+// jalankan yargs
+yargs.parse();
+
+
+- demandCommand()
+yaitu perintah yargs untuk memberikan informasi jika tidak ada perintahnya saat menjalankan "node ./index" atau menjalankan aplikasinya.
+
+
+- jika memakai find() ketika penelusurannya ketemu maka penelusurannya ia akan berhenti. 
+namun jika memakai filter() ketika penelusurannya ketemu maka penelusurannya ia akan dilakukan terus sampai arraynya selesai.  

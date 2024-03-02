@@ -1,0 +1,8 @@
+1. existsSync()
+untuk mengecek apakah sebuah file atau direktori itu ada difile system kita atau tidak.
+
+2. mkdirSync()
+untuk membuat direktori baru.
+
+3. writeFileSync()
+untuk membuat file baru.

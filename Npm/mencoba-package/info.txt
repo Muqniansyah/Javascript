@@ -8,3 +8,5 @@ contoh package yang ada didalam npm :
    package untuk watch preview. yaitu node js akan terus berjalan memeriksa perubahan codingan kita 
    tanpa menjalankannya secara manual seperti contoh secara manual : 
    node <nama_file>
+4. lodash 
+   package untuk mempermudah javascript dalam melakukan array, string, dan object.

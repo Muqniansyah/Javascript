@@ -1,0 +1,16 @@
+{
+  "name": "contact-app-3",
+  "version": "1.0.0",
+  "description": "membuat contact-app ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "muni",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "validator": "^13.5.2",
+    "yargs": "^16.2.0"
+  }
+}

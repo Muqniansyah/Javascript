@@ -1,0 +1,236 @@
+node js adalah javascript runtime yang dibangun /dibuat didalam javascript engine yang namanya v8 milik google chrome. node js adalah sebuah runtime untuk membuat aplikasi yang asynchronous. node js bukan bahasa pemrograman. 
+runtime adalah dimana kita menjalankan / mengeksekusi code kita. 
+
+pembuat node js adalah ryan dahl pada tahun 2009.
+
+- yang bisa dilakukan node js karna sudah bisa diinstal di sistem operasi :
+1. bisa akses memori
+2. bisa akses i/o (input output) 
+3. bisa akses file system
+4. bisa melakukan aktivitas network, makanya bisa membuat web server. 
+
+- karakteristik node js 
+1. Asynchronous & event driven
+2. non blocking 
+3. single threaded but highly scalable
+Artinya dia hanya bisa mengerjakan satu hal satu proses dalam satu waktu tertentu tapi highly scalable, karna node js cenderung cepat. 
+4. cross platform. 
+jadi node js bisa diinstal diberbagai sistem operasi. 
+5. open source dengan MIT license
+6. dan dia memiliki npm (node package manager) 
+
+-fitur utama node js :
+1. file system 
+2. buffer
+buffer ini adalah ketika kita mengelola binary dari filenya. 
+3. http/https
+4. REPL
+repl buat mengeksekusi code atau program node js kita lewat terminal. 
+5. console
+6. cryptography
+7. kompresi menggunakan zlib
+
+- dokumentasi node js :
+https://nodejs.org/dist/latest-v14.x/docs/api
+
+- deployment menggunakan node js di web hosting tidak semudah php. jadi harus setup sendiri jika deployment menggunakan node js. 
+
+- node js cocok untuk aplikasi yang seperti :
+1. dynamic single page application (SPA) 
+yaitu aplikasi yang hanya satu halaman tapi isinya bisa secara dinamis berubah ubah. jadi tidak pindah pindah halaman tapi hanya menggunakan satu halaman saja. 
+2. realtime app (chat, multiplayer) 
+3. API
+4. streaming app
+5. microservices
+jadi satu aplikasi besar didalamnya banyak aplikasi aplikasi. 
+6. command line tool
+7. bikin aplikasi yang stacknya/technologinya seperti MERN, MEAN, MEVN
+
+
+- konteksnya node js itu sudah didalam sistem operasi, dan bukan lagi didalam web browser. jadi nanti tidak bisa menggunakan seperti document.getElementById() atau document.querySelector() dan lainnya.
+
+- callback yaitu fungsi yg dijalankan ketika fungsi luarnya selesai dijalankan. 
+
+
+
+- Terdapat dua cara dalam menjalankan kode JavaScript menggunakan Node.js. 
+Yang pertama dengan memanfaatkan Node REPL dan yang kedua dengan mengeksekusi berkas berekstensi JS.
+
+1.) REPL
+Node.js memiliki fitur REPL atau Read-Eval-Print Loop. Sesuai namanya, 
+fitur ini berfungsi untuk membaca kode JavaScript, mengevaluasi kode tersebut, 
+kemudian mencetak hasil evaluasinya ke console. Nah, untuk loop, berarti proses tersebut selalu berulang.
+REPL merupakan fitur bawaan dari Node.js. Anda bisa mengaksesnya menggunakan perintah node pada Terminal(ketik perintah 'node'). 
+
+di dalam REPL terdapat mode editor yang berfungsi untuk menuliskan kode JavaScript lebih dari satu baris. 
+Untuk menggunakan mode editor, Anda bisa tuliskan perintah .editor(ketik perintah '.editor').
+Ketika masuk ke mode editor, Anda bisa secara leluasa menuliskan kode JavaScript lebih dari satu baris menggunakan enter. 
+Fungsi untuk mengeksekusi kode digantikan dengan kombinasi tombol CTRL+D. 
+dan Untuk keluar dari mode editor, gunakan kombinasi CTRL+C.
+
+Nilai variabel yang Anda buat di REPL dapat diakses selama Anda masih berada di dalam REPL. 
+Jika Anda menutup Terminal atau keluar dari REPL menggunakan perintah .exit(ketik perintah '.exit'),
+variabel yang sudah Anda buat sebelumnya tidak bisa diakses kembali. Itu artinya, REPL hanya menyimpan memory ketika session masih berlangsung.
+Fitur REPL sangat berguna ketika Anda hendak melakukan kalkulasi sederhana, bereksperimen, atau 
+belajar potongan kode JavaScript. Karena melalui REPL Anda bisa mengeksekusi kode JavaScript dan 
+mendapatkan hasil dengan cepat tanpa harus membuat berkas JavaScript terlebih dahulu.
+
+Repl (Read, Eval, Print, Loop) salah satu fitur node js. repl adalah cara kita untuk mengeksekusi script node tapi lewat terminal. jadi kita tidak perlu membuat file javascript.
+repl ini adalah sebuah fitur untuk membaca, mengevaluasi, mencetak dan mengulang kembali script dari node js.
+tujuan dari repl untuk mendebugging dari script kita, dan mengeksekusi code lewat command prompt atau terminal.
+untuk masuk kedalam command prompt milik node js maka kita ketikkan perintah "node" pada terminal, dan command prompt milik node js ini yang disebut dengan Repl.
+yang bisa ditulis dalam repl yaitu seluruh script dari javascript.
+
+
+2.)Running JavaScript File using Node.js
+Cara lain untuk mengeksekusi kode JavaScript menggunakan Node.js adalah melalui berkas JS. 
+Silakan buat berkas JavaScript pada proyek anda. Didalam berkas javascript yang dibuat, 
+Anda bisa menuliskan kode JavaScript sesuka Anda. Pastikan kode yang Anda tulis menampilkan nilai di console,
+jadi Anda bisa melihat nilai yang tampak pada console.
+
+cara menjalankan file di node js. caraya dengan ketik node lalu spasi dan ketik nama filenya atau tempat penyimpanan filenya. contoh :
+node coba
+atau bisa juga dengan cara dibelakang nama filenya kita berikan ekstensi file. contoh :
+node coba.js
+
+
+
+
+-perintah dalam repl
+1.) global
+kita bisa mengakses variabel global
+2.) global.  (lalu tab 2X)
+untuk melihat seluruh modul dalam node js
+3.) .help
+untuk mengetahui spesial keywoard
+4.) .exit
+untuk keluar dari REPL
+5.) .load
+untuk mengambil isi dari sebuah file javascript. caranya ketik .load lalu nama filenya.
+contoh : .load coba.js
+6.) .save
+untuk menyimpan semua script yang diketik dalam node js Repl dalam satu sesi. caranya ketik .save lalu nama filenya yang ingin dibuat.
+contoh : .save coba.js
+7.) .break dan .clear
+untuk keluar ditengah tengah multiline code yang ditulis. jadi perintah .break dan perintah .clear fungsinya sama saja.
+8.) .editor
+untuk menuliskan code yang banyak sekaligus tanpa menggunakan multiline code. multiline code ditandai dengan titik tiga(...).
+jadi seperti memakai code editor vi namun didalam node js Replnya.
+
+-perintah dasar dalam terminal :
+pwd, ls, ll, touch, rm, mkdir
+
+gunanya touch untuk membuat file, caranya yaitu ketik touch lalu nama filenya.
+contohnya : touch coba.js
+
+gunanya mkdir untuk membuat folder, caranya yaitu ketik mkdir lalu nama foldernya.
+contohnya : mkdir latihan-nodejs
+
+gunanya rm untuk menghapus file, caranya yaitu ketik rm lalu nama filenya.
+contohnya : rm coba.js
+
+gunanya cd .. untuk naik satu folder atau akses parent folder dari folder tersebut pada terminal.
+
+
+- untuk masuk kedalam code editor vi lewat terminal dengan menuliskan perintah yaitu vi lalu nama filenya.
+contoh : vi coba.js
+ 
+gunanya untuk mengisi file javascript tanpa membuka code editor vscode, jadi dilakukan pada terminal untuk mengisi file javascript. 
+pada terminal tersebut ketikkan perintah untuk membuka code editor yang bernama vi.
+untuk bisa menuliskannya kita masuk dalam mode insert dengan mengetikkan perintah "i", lalu setelah itu bisa menuliskan script javascript.
+untuk keluar dan save apa yang kita tulis dalam code editor vi yaitu tekan esc lalu ketik ":wq" lalu tekan enter. w untuk write dan q untuk quit.
+untuk melihat isinya kita bisa ketikkan perintah diterminal yaitu cat lalu nama filenya. 
+contoh : cat coba.js
+
+
+# node js module system
+node js menganut sistem module, jadi ia menganggap 1 file sebagai 1 module sendiri. apa yang ada di module yg 1 gabisa semudah itu diakses oleh module yg lain.
+terkecuali menggunakan module.exports, dengan memakai module.exports menandakan ke program node js bahwa kita punya variabel,function, objek dan sebagainya 
+yang bisa dipakai diluar modul atau bisa dipakai di modul atau file lainnya. jadi kita gabisa memakai function, variabel dan sebagainya yang ada pada modul atau file satu dan dipakai kemodul/file lainnya.
+contohnya kita tidak bisa memakai sebuah fungsi yang ada pada file index.js dan kita jalankan fungsi tersebut pada file coba.js
+
+Pada Node.js, setiap berkas JavaScript adalah modul. Anda bisa membagikan nilai variabel, objek, class, atau apa pun itu antar modul. 
+Untuk melakukannya, Anda perlu mengekspor nilai pada module tersebut.
+Untuk mengekspornya, simpanlah nilai tersebut pada properti module.exports.
+
+- node js module system adalah konsep dasar yg dimiliki oleh node js. node js mengaggap setiap file yang dimiliki sebagai sebuah modul sendiri.
+a)modules adalah sekumpulan code yang dapat digunakan kembali, dengan antarmuka yang terdefinisi atau dengan cara cara tertentu.
+b)node modules adalah fungsionalitas yang simpel ataupun kompleks yang tersimpan didalam sebuah file javascript, yang dapat kita gunakan kembali pada aplikasi node js lewat file yang lain.
+
+- node js mempunyai 3 tipe modules.
+1. core modules
+yaitu modules bawaan Node.js atau modules yang sudah dimiliki node js dalam library nya. jika menggunakan core modules proses exportnya sudah dilakukan oleh node js, maka nanti kita tinggal melakukan require saja. 
+2. local modules
+yaitu adalah module yang kita bikin sendiri. jika kita membuat module sendiri berarti kita perlu melakukan 2 hal yaitu mengexport dan melakukan require.
+3. third party modules / npm modules
+yaitu modules yang dibikin oleh orang lain yang bisa kita pakai.
+-semua modul yang dibikin oleh pihak ketiga sudah dikumpulin oleh node js ke sebuah paket manager yang namanya npm. maka dari itu third party modules disebut juga npm modules.
+-Bila third party module dipasang secara lokal, maka modul akan disimpan pada folder node_modules di Node.js project Anda. Bila dipasang secara global, ia akan disimpan pada folder node_modules di lokasi Node.js dipasang.
+
+dokumentasi modules :
+https://nodejs.org/dist/latest-v14x/docs/api/modules.html
+
+- require()
+didalam require kita menuliskan alamat tempat penyimpanan modules.
+fungsi require mencari modules dengan urutan sebagai berikut :
+1) core modules
+2) local modules yaitu pada file atau direktori (. / atau / atau ../)
+3) third party modules yaitu pada folder 'node_modules'
+
+jika kita menggunakan ketiga modules maka sesuaikan urutannya yaitu mulai dari core modules, local modules, dan npm modules.
+
+Lokasi core module dituliskan tidak seperti local module. Lokasi bersifat mutlak (core module disimpan folder lib pada lokasi Node.js dipasang pada komputer Anda. Core module dapat digunakan di mana saja.) 
+sehingga kita cukup menuliskan nama modulnya saja.
+
+-dokumentasi node js core modules :
+https://nodejs.org/dist/latest-v14.x/docs/api/
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------
+a.) Back-end developer
+Menjadi seorang Back-End Developer tentu Anda perlu mengetahui bekal yang harus dimiliki dalam 
+membangun sebuah aplikasi back-end atau web service. singkatnya bak-end itu adalah pembuatan web service.
+dan nodeJS bisa digunakan dalam membuat web service.
+
+Node.js berhasil menjadi JavaScript Runtime yang dapat mengeksekusi kode JavaScript di luar browser. 
+JavaScript menjadi salah satu pilihan tepat dalam membangun web server, terlebih bila Anda adalah seorang Front-End Web Developer. 
+Anda tentu tidak perlu menggunakan bahasa yang berbeda dalam membangun Back-End. 
+Anda bisa menjadi Full-Stack Developer dengan mempelajari satu bahasa pemrograman saja.
+
+
+b.) live server dan server pada node js
+fitur Live Server dan server pada Node.js memiliki perbedaan dalam konteks penggunaan dan fungsionalitas.
+
+1. **Live Server**:
+   Live Server adalah fitur yang biasanya digunakan dalam lingkungan pengembangan web lokal (local development) 
+   menggunakan editor kode seperti Visual Studio Code (VSCode). Fitur ini memungkinkan Anda untuk 
+   menjalankan proyek web Anda secara lokal dengan cepat dan efisien. 
+   Live Server secara otomatis menyajikan proyek Anda melalui server sementara yang berjalan di port tertentu pada localhost. 
+   Fitur ini biasanya digunakan untuk melihat perubahan kode secara real-time dalam browser tanpa harus melakukan refresh manual setiap kali Anda menyimpan perubahan di editor kode.
+
+2. **Server pada Node.js**:
+   Ketika kita berbicara tentang server pada Node.js, kita berbicara tentang membangun aplikasi server menggunakan platform Node.js. 
+   Dalam hal ini, Anda menggunakan kode JavaScript di sisi server untuk mengatasi permintaan dari klien dan memberikan respons. 
+   Server pada Node.js biasanya digunakan untuk membuat aplikasi web, API, atau bahkan aplikasi real-time 
+   seperti aplikasi chat atau permainan yang memerlukan koneksi dua arah antara klien dan server.
+
+**Perbedaan:**
+- Live Server hanyalah fitur pengembangan lokal untuk menyajikan halaman web di browser 
+  saat Anda mengembangkan proyek. Ia hanya berfungsi untuk melihat 
+  perubahan secara real-time pada proyek Anda di browser.
+- Server pada Node.js adalah lingkungan runtime yang memungkinkan Anda membangun aplikasi server-side 
+  yang dapat melayani permintaan dari klien dan memberikan respons sesuai.
+
+**Manakah yang Terbaik untuk Digunakan?**
+Keduanya memiliki peran dan penggunaan yang berbeda:
+- Jika Anda ingin mengembangkan proyek web lokal dan melihat perubahan secara real-time saat mengedit kode, fitur Live Server sangat berguna dan nyaman untuk digunakan.
+- Jika Anda perlu membangun aplikasi server-side atau API, atau jika Anda ingin menjalankan proyek web secara live secara online, 
+  maka Anda harus menggunakan server pada Node.js untuk menyajikan aplikasi Anda.
+
+Dalam banyak kasus, Anda bahkan dapat menggunakan keduanya bersama-sama. 
+Anda dapat mengembangkan proyek lokal dengan bantuan Live Server dan 
+pada saat yang sama menggunakan server Node.js untuk mengatasi permintaan dari klien 
+dan menyajikan aplikasi web Anda secara live secara online.

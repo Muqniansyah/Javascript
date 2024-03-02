@@ -1,0 +1,44 @@
+vid-2: install apk mongodb dan docker
+vid-3: mongodb@3.6.9
+
+
+- untuk melihat dokumentasi dari mongoDB :
+mongodb.com
+
+- mongoDB adalah sebuah database berbasis dokumen yang memiliki skalabilitas dan fleksibilitas yang kita inginkan dan juga memiliki fitur query dan indexing yang kita butuhkan.
+
+- database berbasis dokumen adalah salah satu tipe dari NoSQL Database. 
+
+- NoSQL Database mempunyai arti :
+1. 'not only' sql
+yaitu ia bisa melakukan apa yang dilakukan oleh sql database dan bahkan lebih dari sql database terebut.
+2. schemaless/flexibel schema
+yaitu database yang tidak punya schema. dan dengan schemaless ini bisa saja kita membuat datanya tidak terstruktur. 
+schema atau schema database  itu yaitu struktur dari database dan tabelnya seperti nama tabel, tipe data.
+3. denormalization
+jika pada sql itu mengenal normalisasi, jika pada nosql maka ia denormalisasi.
+denormalisasi yaitu datanya yang tidak normal.
+4. non-relational database
+jadi didalam database tidak ada relasi antar datanya
+jadi tidak menganut primary key, foreign key, kardinalitas karna yidak ada relasi antar tabel.
+5. unstructured, semi-structured, structured data
+
+- tipe no sql database :
+1. key value store :
+redis
+2. document based :
+mongoDB, couchDB
+3. column-oriented database :
+HBase, cassandra
+4. graph database
+neo4j
+
+- terminologi pada sql dan nosql :
+
+- konsep embeded document (denormalisasi) 
+
+
+- alasan memakai mongoDB :
+1.  JSON(BSON)
+2. javascript
+3. MERN, MEVN, MEAN
