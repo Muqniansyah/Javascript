@@ -20,25 +20,81 @@ jika pada sql itu mengenal normalisasi, jika pada nosql maka ia denormalisasi.
 denormalisasi yaitu datanya yang tidak normal.
 4. non-relational database
 jadi didalam database tidak ada relasi antar datanya
-jadi tidak menganut primary key, foreign key, kardinalitas karna yidak ada relasi antar tabel.
+jadi tidak menganut primary key, foreign key, kardinalitas karna tidak ada relasi antar tabel.
 5. unstructured, semi-structured, structured data
+kita bisa menyimpan beragam jenis data. yaitu :
+a)data yang tidak terstruktur(unstructured) 
+b)data yang semi struktur(semi-structured)
+c)data yang terstruktur(structured data), data yang biasa digunakan oleh database mysql.
+
+
 
 - tipe no sql database :
-1. key value store :
-redis
+1. key value store (database yang dimana didalamnya menyimpan key dan value saja) :
+database ini sangat cepat untuk dibaca dan database ini biasanya digunakan untuk cashing. contoh databasenya yaitu redis.
 2. document based :
 mongoDB, couchDB
-3. column-oriented database :
+3. column-oriented database (database berbasis kolom) :
 HBase, cassandra
 4. graph database
 neo4j
 
 - terminologi pada sql dan nosql :
+perbedaan sql dan nosql, yaitu :
 
-- konsep embeded document (denormalisasi) 
+a)sql
+1. didalam database sql memiliki tabel.
+2. kumpulan data pada sql disebut tabel.
+3. satu buah data pada sql disebut record atau baris.
+
+b)no-sql
+1. didalam database no-sql, bentuk datanya seperti format json.
+2. kumpulan data pada no-sql disebut collection.
+3. satu buah data pada no-sql disebut document.
+
+- konsep embeded document (denormalization) 
+contoh ilustrasi pengelolaan data buku didalam no-sql :
+
+{
+ "book_id" : 1,
+ "isbn" : "9898980809",
+ "title" : "second dedication",
+ "author" : "asep",
+},
+{
+ "book_id" : 2,
+ "isbn" : "9834680809",
+ "title" : "one dedication",
+ "author" : "usop",
+ "publisher" : {
+	"publisher_id" : 12,
+	"name" : "really media",
+ }
+},
+
+keterangan ilustrasi :
+kita punya 2 data buku.
+data buku 1 hanya memiliki 4 komponen data atau ada 4 field.
+dan untuk data buku 2 kita memiliki 4 data yang sama dengan data buku 1, tapi di data buku 2 ada field baru yang namanya publisher yang berisi objek lagi atau document lagi.
+publisher yang ada di data buku 2 ini dinamakan embeded document. 
+embeded document yaitu jadi document yang ditambahkan lagi meskipun terlihat tidak sama antar documentnya yaitu antara data buku 1 dan data buku 2.
+dan ini merupakan data yang valid untuk no-sql.
+ 
+"publisher" : {
+	"publisher_id" : 12,
+	"name" : "really media",
+ }
+
 
 
 - alasan memakai mongoDB :
 1.  JSON(BSON)
+karena format data berbentuk json. atau jika dimongoDB disebutnya bson.
 2. javascript
+lebih mudah digunakan karna json datanya javascript.
 3. MERN, MEVN, MEAN
+lebih mudah menguasai stack.
+M = mongoDB
+E = expressJS
+R = reactJS, V = vueJS, A = angularJS
+N = nodeJS

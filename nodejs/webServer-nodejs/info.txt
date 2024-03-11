@@ -1,0 +1,14 @@
+sebuah aplikasi yang berjalan pada terminal disebut aplikasi cli.
+aplikasi cli tidak ada tampilan webnya. 
+pada dasarnya aplikasi cli berbeda dengan aplikasi web.
+
+namun node js bisa kita gunakan untuk membuat aplikasi web, tapi untuk membuatnya kita butuh sebuah web server.
+caranya yaitu kita menggunakan modul modul yang ada didalam core node js untuk membuat sebuah web server yang sangat sederhana.
+dimana nanti web servernya bisa kita jalankan untuk memanggil atau menampilkan halaman website yang kita buat.
+
+- alasan mengapa memakai port 3000, karna port 3000 tidak ada yang pakai dari sistem operasi kita. 
+dan alasan yang kedua karna sudah menjadi standar dalam membuat web server.
+
+
+- jika yang kita ubah adalah htmlnya, kita tidak perlu restart servernya. 
+namun jika yang diubah adalah javascriptnya, kita perlu restart servernya.

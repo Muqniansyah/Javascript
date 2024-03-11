@@ -1,0 +1,113 @@
+yg perlu diinstall
+vid 1: express dan nodemon
+vid 2: ejs@3.1.6, extension ejs language support, dan express-ejs-layout@2.5.1
+vid 3: morgan@1.10.0
+
+
+website resmi expressJS : expressjs.com
+
+pengertian tentang Express JS :
+1. express js adalah web app framework yang dibuat diatas NodeJS
+2. menyediakan antarmuka yang minimal untuk kakas yang diperlukan dalam membuat sebuah aplikasi web.
+   artinya dengan menuliskan beberapa baris code saja, kita sudah bisa membuat aplikasi yang sederhana.
+3. membantu pengelolaan aliran data dari server ke aplikasi.
+4. mendukung pembuatan stack technologi seperti MERN, MEAN, MEVN.
+5. diciptakan oleh TJ Holowaychuck, pada tanggal 22 mei 2010.
+
+fitur Express JS :
+1. menangani request dengan berbagai metode HTTP dengan mudah (routes). 
+   istilahnya membuat sebuah routing system atau routes. 
+   jadi express juga bisa menangani dalam pembuatan rest api dengan baik.
+2. bisa membuat aplikasi dengan konsep MVC (Model-View-Controller)
+3. terintegrasi dengan "view" rendering engine, untuk mengelola template.
+   atau istilahnya templating system untuk mengelola template
+4. middleware yang bisa digunakan dengan mudah.
+
+dalam framework mempunyai 2 konsep :
+1. opinionated
+   opinionated artinya aturan aturan dalam membuat sesuatu dari framework tersebut diberikan panduan dari frameworknya.
+   jadi aturan aturannya sudah jelas dan begitu juga tata caranya. 
+   jadi hanya ada satu cara yang tepat untuk membuat sesuatu.
+2. unopinionated
+   unopinionated artinya tidak ada aturan baku untuk membuat sesuatu. 
+   namun pada dasarnya aturannya tetap ada tapi kita lebih diberi kebebasan untuk membuat sesuatu.
+   unopinionated juga lebih fleksibel. dan unopinionated juga bisa menentukkan sendiri struktur aplikasinya,
+   seperti menentukkan struktur foldernya, dan lain sebagainya.
+   dan unopinionated juga memudahkan untuk bongkar pasang middleware.
+
+mengenai templating engine.
+diexpress js ini memiliki banyak templating engine yang sudah terintegrasi atau yang sudah 
+disupport oleh framework express js. yaitu :
+pug, hamljs, ejs, hbs, dan lain sebagainya.
+
+mengenai database.
+express js dapat dengan mudah terkoneksi dan mengelola database - database berikut :
+cassandra, couchbase, couchDB, levelDB, mysql, mongoDB, neo4j, oracle, postgreSQL, redis, SQL Server, SQLite, elasticsearch.
+
+
+cara penggunaan sederhana express JS :
+
+// panggil express jsnya, namun harus install express js terlebih dahulu.
+const express = require("express");
+
+// panggil express jsnya menjadi sebuah variabel atau kita simpan pemanggilan express didalam variabel.
+const app = express();
+
+// kita tentukan portnya.
+const port = 3000;
+
+// tentukan routesnya.
+app.get('/', (request, response) => {
+    response.Send("Hello World!);
+});
+
+// panggil dengan listen supaya aplikasi expressJS bisa dijalankan.
+app.listen(port, () => {
+    console.log(`Example app listening at http://localhost:${port}`)
+});
+
+
+pengertian dari Express view engine atau template engine.
+a) memungkinkan kita membuat file template statis untuk aplikasi kita. atau sebuah cara untuk mempermudah pengelolaan file statis halaman web pada aplikasi kita.
+b) engine tersebut mengganti variabel pada template kita dengan nilai sebenarnya, lalu menampilkannya dalam bentuk HTML.
+c) tujuan utamanya yaitu mempermudah pembuatan halaman HTML.
+
+
+alasan memakai EJS(Embedded Javascript Template)
+website resmi : https://ejs.co
+1) simple syntax
+2) simple setup
+3) speedy execution
+4) easy debugging
+5) active development
+6) awalnya dibuat oleh pembuat expressJS
+
+
+mengenai middleware. 
+middleware adalah sebuah software yang menghubungkan software atau aplikasi lain.
+pada awalnya, middleware ini adalah sebuah istilah sebuah software yang berada diantara sistem operasi dan aplikasi.
+
+tapi semakin berkembang, istilah middleware bisa terpakai atau berada pada :
+database, web server, game engine, web application.
+
+
+- middleware pada web application itu intinya sebuah aplikasi atau software yang akan dijalankan setelah kita mengirimkan request dan sebelum menerima response.
+
+mengenai definisi dari express middleware atau middleware yang ada didalam expressJS.
+aplikasi express itu sebenarnya berisi serangkaian pemanggilan fungsi middleware. 
+express menganggap apapun yang diproses setelah user melakukan request dan sebelum user menerima respon itu adalah middleware.
+jadi didalam expressJS menyebutnya fungsi middleware. middleware itu dibuat menjadi sebuah function.
+
+fungsi middleware :
+sebuah fungsi yang memiliki akses ke object request(req), object response(res), dan fungsi middleware berikutnya(next).
+
+didalam expressJS middleware ada 3, yaitu :
+1. user-defined middleware (middleware yang kita bikin sendiri)
+ada 3 bagian pada user-defined middleware, yaitu :
+a)application level middleware
+b)router level middleware
+c)error handling middleware
+
+2. built-in middleware (middleware yang sudah tertanam didalam expressJS yang berfungsi untuk melakukan sesuatu secara spesifik)
+
+3. third-party middleware (middleware yang sudah dibuatkan oleh orang lain dan bisa kita install juga lewat npm tapi bukan sebagai modul namun sebagai middleware)
