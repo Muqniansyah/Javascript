@@ -1,0 +1,9 @@
+secara default express melindungi file file statis kita. 
+seperti gambar, css, javascript, musik, video. 
+jadi asset file file ini tidak bisa diakses secara default atau dalam arti lain istilahnya yaitu diproteksi oleh expressnya.
+supaya kita bisa mengakses asset file file tersebut kita harus memberi tau ke expressnya 
+jika kita punya folder public yang isinya file file statis yang bisa diakses oleh siapapun.
+dan itu caranya kita bisa menggunakan middleware built-in yang namanya express.static.
+
+
+- morgan digunakan untuk menuliskan log kedalam console. morgan mirip dengan console.log() pada javascript.

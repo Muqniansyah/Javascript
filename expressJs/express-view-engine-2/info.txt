@@ -1,0 +1,42 @@
+dicontoh ini menggunakan package dari npm yaitu express-ejs-layouts untuk memudahkan pemakaian ejs saja dalam hal layouting.
+disini kita memiliki 1 layout utama yang isinya mengambil dari layout yang berbeda dari tiap halaman.
+disini kita tetap memakai view engine ejs dan express-ejs-layouts digunakan untuk memudahkan pemakaian ejs saja.
+
+cara menggunakannya :
+1)install package
+npm install express-ejs-layouts@2.5.1
+2)lakukan require pada file javscript utama yaitu ejs.js
+const expressLayouts = require("express-ejs-layouts");
+3)cara setup atau cara konfigurasi express-ejs-layouts
+app.use(expressLayouts);
+4) membuat file layout utama yang kita beri nama seperti contoh disini yaitu main-layout.ejs
+yang isi dari file tersebut kita bisa berikan sesuatu hal yang sama pada setiap halaman.
+dan dalam main-layout.ejs atau layout utama kita bisa memberikan layout yang berbeda dari tiap halaman dengan menggunakan include.
+
+contohnya :
+<%- include('nav') %>
+
+<div class="container">
+  <%- body %> //untuk mengambil isi dari tag html tiap halaman tanpa terkena escape character
+</div>
+
+jadi apapun isi dari halaman"lain seperti about.ejs, contact.ejs akan tersimpan pada body pada layout utama kita yaitu pada body file main-layout.ejs.
+sehingga pada file about.ejs dan contact.ejs yang ada dalam folder views, kita berikan isi yaitu konten yang berbeda pada setiap halaman website. yaitu hanya berisi :
+<h1>Ini adalah Halaman About!</h1>      // pada file about.ejs
+<h1>Ini adalah Halaman Contact!</h1>    // pada file contact.ejs
+
+5) tambahakan key layout yang memiliki value yang mengarah pada template utama kita yaitu main-layout.ejs atau halaman layout mana yang ingin kita pakai lalu
+kita letakkan pada route halaman yang ingin kita tampilkan pada website, kita berikan route ini pada file javscript utama yaitu ejs.js
+
+//key layout. dan layout ini relatif terhadap folder views.
+layout: "layouts/main-layout",
+
+//route contact atau route dari halaman contact
+app.get("/contact", (req, res) => {
+  res.render("contact", {
+    layout: "layouts/main-layout",
+    title: "Halaman Contact",
+  });
+});
+
+6)selesai

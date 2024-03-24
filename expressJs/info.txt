@@ -5,6 +5,7 @@ vid 3: morgan@1.10.0
 
 
 website resmi expressJS : expressjs.com
+install dengan cara : npm install express
 
 pengertian tentang Express JS :
 1. express js adalah web app framework yang dibuat diatas NodeJS
@@ -57,6 +58,7 @@ const app = express();
 const port = 3000;
 
 // tentukan routesnya.
+// slash atau / adalah root dari website kita.
 app.get('/', (request, response) => {
     response.Send("Hello World!);
 });
@@ -111,3 +113,13 @@ c)error handling middleware
 2. built-in middleware (middleware yang sudah tertanam didalam expressJS yang berfungsi untuk melakukan sesuatu secara spesifik)
 
 3. third-party middleware (middleware yang sudah dibuatkan oleh orang lain dan bisa kita install juga lewat npm tapi bukan sebagai modul namun sebagai middleware)
+
+
+
+- request dan response
+response itu apa yang dikembalikkan dari express ketika kita menargetkan path atau alamat tertentu.
+request itu apa yang dikirimkan ke express.
+
+- method sendFile() pada express bisa digunakan untuk mengambil isi dari file(seperti html,css,pdf,jpg).
+
+

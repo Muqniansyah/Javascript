@@ -1,0 +1,79 @@
+noted :
+1. app.set("view engine", "ejs");
+ketika sudah pakai view engine ejs atau yang lain, maka expressnya sudah mendeteksi halaman viewnya yang ada didalam folder views.
+maka dari itu supaya rapih kita simpan tampilan views kedalam folder terpisah, caranya kita buat folder views.
+
+2. cara memanggil viewsnya dengan :
+res.render("about");
+
+dengan melakukan seperti ini kita bisa memanggil halaman didalam folder views.
+dan caranya kita cukup memanggil nama filenya saja. seperti "about" yaitu memanggil file about.ejs didalam folder views.
+kita tidak perlu menentukkan lagi folder rootnya berada dimana.
+
+3. ketika memakai view engine didalam folder views kita harus mengganti ekstensi nama filenya sesuai dengan view engine yang digunakan.
+karna kita memakai ejs jadi kita perlu merename/merubah file yang tadinya about.html menjadi about.ejs
+
+4. exxpress tidak bisa melakukan includes, namun dengan view engine ejs kita dapat dengan mudah melakukan includes yang tujuannya untuk 
+mengelola tampilan pada template halaman html kita menggunakan includes.
+
+5. res.render("index", {
+    sapaan: "good morning",
+    title: "view engine",
+    mahasiswa: mahasiswa,
+  });
+
+cara mengirimkan data kita bisa berikan parameter baru dengan cara kita beri tanda koma setelah nama viewnya lalu kita kaih objek.
+isi dari objek akan terkirim ke halaman view index. isi dari objek didalam view index :
+   sapaan: "good morning",
+   title: "view engine",
+   mahasiswa: mahasiswa,
+
+cara memanggilnya pada view index, tepatnya pada file index.ejs kita melakukan dengan cara :
+<title><%= title %></title>
+
+<p><%= sapaan %> muqniansyah</p>
+
+<% if (mahasiswa.length < 1) { %>
+    <p>Data mahasiswa masih kosong.</p>
+    <% } else { %>
+    <% mahasiswa.forEach(mhs => { %>
+    <ul>
+      <li>Nama : <%= mhs.nama %></li>
+      <li>Email : <%= mhs.email %></li>
+    </ul>
+    <% }) %> <% } %>
+
+6. memakai sistem layouts.
+sistem layout digunakan ketika memliki banyak file yang identik namun berbeda dibagian tertentu saja didalam folder views yang sering disebut halaman view. 
+caranya :
+1)buat folder layouts dalam folder views
+2)buat file didalam layouts yang untuk memisahkan bagian per bagian dari halaman website.
+pada contoh express-view-engine ini kita memisahkan menjadi 4 bagian, yaitu
+header,nav,konten,footer. jadi kita akan membuat file tersebut selain konten karna pada bagian konten ini memliki perbedaan pada setiap halaman websitenya. 
+3)buat prettier ignore untuk mengabaikan seluruh file ejs
+4)rangkai bagian perbagian supaya kita bisa memberikan hal yang sama pada setiap halaman websitenya.
+pada file header.ejs kita isi file tersebut dengan bagian header (yaitu contohnya bisa dari doctype hingga awal body).
+pada file nav.ejs kita isi file tersebut dengan bagian navigasi. 
+pada file footer.ejs kita isi file tersebut dengan bagian footer (yaitu contohnya bisa dari footernya yang kita buat hingga tutup html)
+
+jika sudah semua maka kita akan rangkai lagi kedalam halaman website yang ingin kita tampilkan. 
+contohnya disini kita ingin menampilkan halaman about dan contact.
+disini kita lakukan dengan cara includes yaitu dengan memakai syntax yang bernama include. 
+contohnya pada halaman about / about.ejs :
+didalam include berisi alamat tempat penyimpanan layoutsnya dalam folder views, karna relatif terhadap folder views.
+
+    <%- include('layouts/header') %>   //include file header.ejs
+    <%- include('layouts/nav') %>      //include file nav.ejs
+
+    <h1>Ini adalah Halaman About!</h1> //konten yang berbeda pada setiap halaman websitenya
+
+    <%- include('layouts/footer') %>   //include file footer.ejs
+
+begitu juga contohnya pada halaman contact / contact.ejs :
+   <%- include('layouts/header') %>
+   <%- include('layouts/nav') %>
+
+   <h1>Ini adalah Halaman Contact!</h1>
+
+   <%- include('layouts/footer') %>
+5) selesai 

@@ -1,0 +1,23 @@
+<h1>hello world!</h1>
+
+<!-- membuat variabel dengan tag express melalui ejs view engine -->
+<% const nama = "muqniansyah"; %>
+<!-- cara memanggil isi variabelnya -->
+<h2>Halo <%= nama %></h2>
+
+<!-- mengirim data sapaan ke file javascript / ejs.ejs -->
+<p><%= sapaan %> muqniansyah</p>
+
+<!-- menampilkan data mahasiswa -->
+<h4>Daftar Mahasiswa</h4>
+<!-- untuk cek jika data mahasiswa kosong -->
+<% if (mahasiswa.length < 1) { %>
+<p>Data mahasiswa masih kosong.</p>
+<% } else { %>
+<!-- melakukan pengulangan terhadap isinya -->
+<% mahasiswa.forEach(mhs => { %>
+<ul>
+  <li>Nama : <%= mhs.nama %></li>
+  <li>Email : <%= mhs.email %></li>
+</ul>
+<% }) %> <% } %>

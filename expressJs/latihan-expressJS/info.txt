@@ -1,0 +1,101 @@
+a) jika muncul perintah seperti ini pada terminal : 
+body-parser deprecated undefined extended: provide extended option app.js:16:17
+
+maka lakukan dengan menambahakan option {extended: true}, contoh : 
+app.use(express.urlencoded({extended: true}));
+
+b) const { body, validationResult, check } = require("express-validator");
+body -> untuk menangkap apa yang sudah diisikan didalam form
+validationResult -> untuk menyimpan data validasi. 
+check -> mengcustom pesan yang dikirimkan. misalnya membuat pesan error menjadi bahasa indonesia
+
+
+c)[body("email").isEmail(), body("nohp").isMobilePhone()],
+pada email dan nohp yang berada dalam body diatas harus sama dengan name pada form input yang berada di add-contact.ejs
+
+d)  "/contact",
+  [
+    check("email", "Email tidak valid!").isEmail(),
+    check("nohp", "No HP tidak valid!").isMobilePhone("id-ID"),
+  ],
+
+"Email tidak valid!" dan "No HP tidak valid!" adalah pesan error ketika memakai check.
+
+e) flash message (pesan kilat) itu biasanya tersimpan dalam session atau sesi yang ada pada saat itu saja.
+
+f) cara memakai flash message
+1. melakukan require dengan cara :
+const session = require("express-session");
+const cookieParser = require("cookie-parser");
+const flash = require("connect-flash");
+
+2. lakukan konfigurasi :
+app.use(cookieParser("secret"));
+app.use(
+  session({
+    cookie: { maxAge: 6000 },
+    secret: "secret",
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+app.use(flash());
+
+3. lalu sebelum di redirect lakukan flash message, contoh :
+req.flash("message", "Data contact berhasil ditambahkan!");
+parameter pertama yaitu nama messagenya yaitu message.
+parameter kedua yaitu pesan messagenya yaitu Data contact berhasil ditambahkan!.
+
+jadi pada akhirnya di session akan ada variabel yaitu message yang berisi pesannya Data contact berhasil ditambahkan!.
+lalu jika sudah maka kita akan tangkap di halaman contact pada method get, contoh :
+
+app.get("/contact", (req, res) => {
+  const contacts = loadContact();
+  console.log(contacts);
+
+  res.render("contact", {
+    layout: "layouts/main-layout",
+    title: "Halaman Contact",
+    contacts: contacts,
+    message: req.flash('message') //perintah yang ditambahkan
+  });
+});
+
+maka dihalaman contact ini selain mengirimkan contact, kita juga mengirimkan messagenya.
+
+4. lalu kita lakukan pengecekan di contact.ejs, contoh pengecekan :
+<% if (message.length !== 0) { %>
+      <div class="alert alert-success" role="alert"><%= message %></div>
+<% } %>
+
+G) pada latihan express, disini tidak menggunakan restfull API karna request method yang akan digunakan yaitu hanya 
+get dan post. karna jika kita ingin membuat aplikasi resfull API maka request method yang digunakan yaitu get, post, put, dan delete.
+dan pada latihan express ini request method put diganti dengan post dan request method delete diganti dengan get.
+
+1. jika kita menggunakan restfull api kita bisa menggunakan url yang sama dan yang membedakan hanya request methodnya.
+contoh  :
+
+//request method get
+app.get("/contact/:nama", (req, res) => { 
+});
+
+//request method delete
+app.delete("/contact/:nama", (req, res) => { 
+});
+
+2. jika tidak menggunakan resfull api, maka kita tidak menggunakan request method delete namun dengan get. dan cara 
+memakainya diletakkan sebelum route yang menuliskan setelah slash(/) ada titik dua (:), contoh :
+
+//request method delete
+app.get("/contact/delete/:nama", (req, res) => { 
+});
+
+//request method get
+app.get("/contact/:nama", (req, res) => { 
+});
+
+H) value="<%= (contact.oldNama) ? contact.oldNama : contact.nama %>"
+artinya didalam objek contact apakah ada oldNama? jika ada maka yang menjadi value adalah oldNama : jika tidak ada maka yang menjadi value adalah nama atau nama yang baru.
+
+atau suapaya lebih ringkas bisa memakai operator or, contoh :
+value="<%= contact.oldNama || contact.nama %>
